@@ -116,7 +116,7 @@ namespace werkplekleren_project_galgje
             stringBuilderGeheimWoord.Append(InputTextBox.Text);
             AanmakenWoordInAsterix();
             InputTextBox.Text = string.Empty;            
-            RaadButton.Visibility = Visibility.Visible;
+            VWBX_RaadButton.Visibility = Visibility.Visible;
             VerbergWoordButton.IsEnabled = false;            
             StringBuilderOutput();
         }       
@@ -164,7 +164,7 @@ namespace werkplekleren_project_galgje
             stringBuilderFouteLetter.Clear();
             VerbergWoordButton.IsEnabled = true;
             RaadButton.IsEnabled = true;
-            RaadButton.Visibility = Visibility.Hidden;
+            VWBX_RaadButton.Visibility = Visibility.Hidden;
             aantalLevens = 10;
             timer.Stop();
         }

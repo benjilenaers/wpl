@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:werkplekleren_project_galgje"
         mc:Ignorable="d"
-        Title="MainWindow" Height="497.128" Width="849.485">
+        Title="MainWindow" Height="500" Width="850">
 
     <Grid Background="#222222">
 
@@ -26,7 +26,12 @@
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
 
-        <Viewbox Name="VWBX_VerbergWoord" Grid.Column="4" Margin="90,73,10,5" Grid.Row="3" Grid.ColumnSpan="2" Grid.RowSpan="2">
+        <Viewbox Grid.ColumnSpan="3" Margin="0,0,108,0" Grid.Column="2">
+            <TextBox Text="Hangman" BorderThickness="0" Background="#222222"
+                 FontFamily="algerian" Foreground="Maroon"    
+            ></TextBox>
+        </Viewbox>
+        <Viewbox Name="VWBX_VerbergWoord" Grid.Column="3" Margin="10,70,90,28" Grid.Row="4" Grid.ColumnSpan="2" Grid.RowSpan="2">
             <Label 
             Name="VerbergWoordButton" Content="Verberg woord" Background="Maroon"
             BorderBrush="Black" BorderThickness="2" FontFamily="algerian" 
@@ -34,19 +39,19 @@
             HorizontalContentAlignment="Center" 
             MouseDown="VerbergWoordButton_MouseDown"
             MouseEnter="VerbergWoordButton_MouseEnter" 
-            MouseLeave="VerbergWoordButton_MouseLeave" Height="41"
+            MouseLeave="VerbergWoordButton_MouseLeave"
             >
                 <Label.Effect>
                     <DropShadowEffect/>
                 </Label.Effect>
             </Label>
         </Viewbox>
-        <Viewbox Grid.ColumnSpan="2" Grid.Column="4" Margin="90,68,10,10" Grid.Row="2" Grid.RowSpan="2">
+        <Viewbox Name="VWBX_RaadButton" Visibility="Collapsed" Grid.Column="3" Margin="24,70,10,28" Grid.Row="4" Grid.RowSpan="2">
             <Label 
             Name="RaadButton" VerticalContentAlignment="Center"
-            HorizontalContentAlignment="Center"
+            HorizontalContentAlignment="Center" 
             Content="Raad" Background="Maroon" FontFamily="algerian"
-            BorderBrush="Black" Width="88"
+            BorderBrush="Black" 
             BorderThickness="2" 
             MouseDown="RaadButton_MouseDown" 
             MouseEnter="RaadButton_MouseEnter"
@@ -57,7 +62,7 @@
                 </Label.Effect>
             </Label>
         </Viewbox>
-        <Viewbox Name="VWBX_NieuwSpel" Grid.Column="4" Grid.Row="5" Margin="90,0,10,0" Grid.ColumnSpan="2">
+        <Viewbox Name="VWBX_NieuwSpel" Grid.Column="5" Grid.Row="5" Margin="10,29,0,10">
             <Label 
                 Name="NieuwSpel" 
                 Content="Nieuw Spel" Background="Maroon" FontFamily="algerian"
@@ -66,7 +71,7 @@
                 BorderThickness="2"                
                 MouseDown="NieuwSpel_MouseDown"
                 MouseEnter="NieuwSpel_MouseEnter"
-                MouseLeave="NieuwSpel_MouseLeave" Width="88" 
+                MouseLeave="NieuwSpel_MouseLeave"  
             >
                 <Label.Effect>
                     <DropShadowEffect/>
@@ -74,7 +79,7 @@
             </Label>
         </Viewbox>
 
-        <Viewbox Grid.ColumnSpan="4" Grid.Column="1" Margin="71,34,109,23" 
+        <Viewbox Grid.ColumnSpan="2" Grid.Column="1" Margin="10,47,0,10" 
                  Grid.Row="4" Grid.RowSpan="2">
             <TextBox Background="#333333" BorderBrush="#804c36" BorderThickness="2"
             Name="InputTextBox"           
@@ -83,13 +88,13 @@
             Text="" VerticalAlignment="Center" 
             Width="450" TextAlignment="Center" FontSize="30"/>
         </Viewbox>
-        <Viewbox Grid.Row="1" Grid.ColumnSpan="3" Margin="79,42,83,58" Grid.RowSpan="4">
+        <Viewbox Grid.Row="1" Grid.ColumnSpan="3" Margin="81,22,10,31" Grid.RowSpan="4">
             <TextBox
             Name="OutputTextBlock" Background="#333333"
             HorizontalAlignment="Left" BorderBrush="#804c36" BorderThickness="0.3"
             TextWrapping="Wrap" Text="" 
-            VerticalAlignment="Top" 
-            FontSize="20" TextAlignment="Left" Width="35" Height="29"/>
+            VerticalAlignment="Top" FontFamily="algerian" FontSize="2.4"
+            TextAlignment="Left" Width="38" Height="31"/>
         </Viewbox>
         <Viewbox Grid.Row="1" Grid.Column="4">
             <TextBox 

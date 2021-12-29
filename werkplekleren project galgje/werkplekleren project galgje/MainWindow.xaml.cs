@@ -46,10 +46,25 @@ namespace werkplekleren_project_galgje
             timer.Tick += new EventHandler(timer_Tick);
             timer.Interval = new TimeSpan(0, 0, 1);
         }
-        private void VerbergWoordButton_Click(object sender, RoutedEventArgs e)
-        {            
+        private void VerbergWoordButton_MouseDown(object sender, MouseButtonEventArgs e)
+        {
             StartSpel();
             timer.Start();
+        }
+        private void VerbergWoordButton_MouseEnter(object sender, MouseEventArgs e)
+        {
+            Cursor = Cursors.Hand;
+            VerbergWoordButton.Background = Brushes.Black;
+            VerbergWoordButton.Foreground = Brushes.Maroon;
+            VerbergWoordButton.BorderBrush = Brushes.Red;
+        }
+
+        private void VerbergWoordButton_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Cursor = Cursors.Arrow;
+            VerbergWoordButton.Background = Brushes.Maroon;
+            VerbergWoordButton.Foreground = Brushes.Black;
+            VerbergWoordButton.BorderBrush = Brushes.Black;
         }
         private void RaadButton_Click(object sender, RoutedEventArgs e)
         {
@@ -62,6 +77,21 @@ namespace werkplekleren_project_galgje
         private void NieuwSpel_MouseDown(object sender, MouseButtonEventArgs e)
         {
             AllesVoorEenNieuwSpel();
+        }
+        private void NieuwSpel_MouseEnter(object sender, MouseEventArgs e)
+        {
+            Cursor = Cursors.Hand;
+            NieuwSpel.Background = Brushes.Black;
+            NieuwSpel.Foreground = Brushes.Maroon;
+            NieuwSpel.BorderBrush = Brushes.Red;
+        }
+
+        private void NieuwSpel_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Cursor = Cursors.Arrow;
+            NieuwSpel.Background = Brushes.Maroon;
+            NieuwSpel.Foreground = Brushes.Black;
+            NieuwSpel.BorderBrush = Brushes.Black;
         }
 
         //methodes               
@@ -266,6 +296,6 @@ namespace werkplekleren_project_galgje
             }
         }
 
-       
+        
     }
 }

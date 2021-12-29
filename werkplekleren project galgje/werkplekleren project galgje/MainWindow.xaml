@@ -26,11 +26,19 @@
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
 
-        <Button 
-            Name="VerbergWoordButton"
-            Content="Verberg woord" HorizontalAlignment="Left" 
-            Margin="630,250,0,0" VerticalAlignment="Top" 
-            Width="150" Height="64" Click="VerbergWoordButton_Click"/>
+        <Viewbox Name="VWBX_VerbergWoord" Grid.Column="4" Margin="90,67,10,63" Grid.Row="3" Grid.ColumnSpan="2" Grid.RowSpan="3">
+            <Label 
+            Name="VerbergWoordButton" Content="Verberg woord" Background="Maroon"
+            BorderBrush="Black" BorderThickness="2" FontFamily="algerian" 
+            VerticalContentAlignment="Center" 
+            HorizontalContentAlignment="Center" 
+            MouseDown="VerbergWoordButton_MouseDown" MouseEnter="VerbergWoordButton_MouseEnter" MouseLeave="VerbergWoordButton_MouseLeave"
+            >
+                <Label.Effect>
+                    <DropShadowEffect/>
+                </Label.Effect>
+            </Label>
+        </Viewbox>
 
         <Button 
             Name="RaadButton"
@@ -39,40 +47,47 @@
             Width="150" Height="64" Click="RaadButton_Click" 
             Visibility="Collapsed"/>
 
-        <Label 
-                Name="NieuwSpel" Grid.Column="4" Grid.Row="5"
+        <Viewbox Name="VWBX_NieuwSpel" Grid.Column="5" Grid.Row="5" Margin="10,0">
+            <Label 
+                Name="NieuwSpel" 
                 Content="Nieuw Spel" Background="Maroon" FontFamily="algerian"
                 VerticalContentAlignment="Center" 
                 HorizontalContentAlignment="Center" BorderBrush="Black" 
                 BorderThickness="2"                
-                Width="150" Height="64" RenderTransformOrigin="0.445,0.512" MouseDown="NieuwSpel_MouseDown" Grid.ColumnSpan="2" Margin="120,6,10,8" 
+                MouseDown="NieuwSpel_MouseDown"
+                MouseEnter="NieuwSpel_MouseEnter"
+                MouseLeave="NieuwSpel_MouseLeave" 
             >
-            <Label.Effect>
-                <DropShadowEffect/>
-            </Label.Effect>
-        </Label>
+                <Label.Effect>
+                    <DropShadowEffect/>
+                </Label.Effect>
+            </Label>
+        </Viewbox>
 
-        <TextBox 
-            Name="InputTextBox"
-            BorderBrush="Black"            
+        <Viewbox Grid.ColumnSpan="4" Grid.Column="1" Margin="71,34,109,23" 
+                 Grid.Row="4" Grid.RowSpan="2">
+            <TextBox Background="#333333" BorderBrush="#804c36" BorderThickness="2"
+            Name="InputTextBox"           
             HorizontalAlignment="Center" Height="80" 
-            Margin="50,328,292,11" TextWrapping="Wrap" 
+            TextWrapping="Wrap" 
             Text="" VerticalAlignment="Center" 
             Width="450" TextAlignment="Center" FontSize="30"/>
-
-        <TextBlock 
-            Name="OutputTextBlock"
-            HorizontalAlignment="Left" Margin="50,175,0,0" 
+        </Viewbox>
+        <Viewbox Grid.Row="1" Grid.ColumnSpan="3" Margin="79,42,83,58" Grid.RowSpan="4">
+            <TextBox
+            Name="OutputTextBlock" Background="#333333"
+            HorizontalAlignment="Left" BorderBrush="#804c36" BorderThickness="0.3"
             TextWrapping="Wrap" Text="" 
-            VerticalAlignment="Top" Height="139" Width="290"
-            FontSize="20" TextAlignment="Left"/>
-
-        <TextBox 
-            Name="seconden"            
-            HorizontalAlignment="Left" Height="45" Margin="546,25,0,0" 
+            VerticalAlignment="Top" 
+            FontSize="20" TextAlignment="Left" Width="35" Height="29"/>
+        </Viewbox>
+        <Viewbox Grid.Row="1" Grid.Column="4">
+            <TextBox 
+            Name="seconden"  Background="#333333"  FontFamily="algerian"        
+            HorizontalAlignment="Left" BorderBrush="#804c36"
             TextWrapping="Wrap" Text="10" VerticalAlignment="Top"
             Width="46" FontSize="30" FontWeight="Bold" TextAlignment="Center"/>
-
+        </Viewbox>
     </Grid>
 
 </Window>

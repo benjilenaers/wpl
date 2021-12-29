@@ -26,28 +26,38 @@
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
 
-        <Viewbox Name="VWBX_VerbergWoord" Grid.Column="4" Margin="90,67,10,63" Grid.Row="3" Grid.ColumnSpan="2" Grid.RowSpan="3">
+        <Viewbox Name="VWBX_VerbergWoord" Grid.Column="4" Margin="90,73,10,5" Grid.Row="3" Grid.ColumnSpan="2" Grid.RowSpan="2">
             <Label 
             Name="VerbergWoordButton" Content="Verberg woord" Background="Maroon"
             BorderBrush="Black" BorderThickness="2" FontFamily="algerian" 
             VerticalContentAlignment="Center" 
             HorizontalContentAlignment="Center" 
-            MouseDown="VerbergWoordButton_MouseDown" MouseEnter="VerbergWoordButton_MouseEnter" MouseLeave="VerbergWoordButton_MouseLeave"
+            MouseDown="VerbergWoordButton_MouseDown"
+            MouseEnter="VerbergWoordButton_MouseEnter" 
+            MouseLeave="VerbergWoordButton_MouseLeave" Height="41"
             >
                 <Label.Effect>
                     <DropShadowEffect/>
                 </Label.Effect>
             </Label>
         </Viewbox>
-
-        <Button 
-            Name="RaadButton"
-            Content="Raad" HorizontalAlignment="Left" 
-            Margin="630,325,0,0" VerticalAlignment="Top" 
-            Width="150" Height="64" Click="RaadButton_Click" 
-            Visibility="Collapsed"/>
-
-        <Viewbox Name="VWBX_NieuwSpel" Grid.Column="5" Grid.Row="5" Margin="10,0">
+        <Viewbox Grid.ColumnSpan="2" Grid.Column="4" Margin="90,68,10,10" Grid.Row="2" Grid.RowSpan="2">
+            <Label 
+            Name="RaadButton" VerticalContentAlignment="Center"
+            HorizontalContentAlignment="Center"
+            Content="Raad" Background="Maroon" FontFamily="algerian"
+            BorderBrush="Black" Width="88"
+            BorderThickness="2" 
+            MouseDown="RaadButton_MouseDown" 
+            MouseEnter="RaadButton_MouseEnter"
+            MouseLeave="RaadButton_MouseLeave"                 
+            >
+                <Label.Effect>
+                    <DropShadowEffect/>
+                </Label.Effect>
+            </Label>
+        </Viewbox>
+        <Viewbox Name="VWBX_NieuwSpel" Grid.Column="4" Grid.Row="5" Margin="90,0,10,0" Grid.ColumnSpan="2">
             <Label 
                 Name="NieuwSpel" 
                 Content="Nieuw Spel" Background="Maroon" FontFamily="algerian"
@@ -56,7 +66,7 @@
                 BorderThickness="2"                
                 MouseDown="NieuwSpel_MouseDown"
                 MouseEnter="NieuwSpel_MouseEnter"
-                MouseLeave="NieuwSpel_MouseLeave" 
+                MouseLeave="NieuwSpel_MouseLeave" Width="88" 
             >
                 <Label.Effect>
                     <DropShadowEffect/>

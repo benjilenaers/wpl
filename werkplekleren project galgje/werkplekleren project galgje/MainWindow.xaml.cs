@@ -66,13 +66,29 @@ namespace werkplekleren_project_galgje
             VerbergWoordButton.Foreground = Brushes.Black;
             VerbergWoordButton.BorderBrush = Brushes.Black;
         }
-        private void RaadButton_Click(object sender, RoutedEventArgs e)
+        private void RaadButton_MouseDown(object sender, MouseButtonEventArgs e)
         {
             timer.Start();
             VerloopVanHetSpel();
             secondenAftellen = 10;
             seconden.Text = secondenAftellen.ToString();
-            InputTextBox.Text = string.Empty; 
+            InputTextBox.Text = string.Empty;
+        }
+
+        private void RaadButton_MouseEnter(object sender, MouseEventArgs e)
+        {
+            Cursor = Cursors.Hand;
+            RaadButton.Background = Brushes.Black;
+            RaadButton.Foreground = Brushes.Maroon;
+            RaadButton.BorderBrush = Brushes.Red;
+        }
+
+        private void RaadButton_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Cursor = Cursors.Arrow;
+            RaadButton.Background = Brushes.Maroon;
+            RaadButton.Foreground = Brushes.Black;
+            RaadButton.BorderBrush = Brushes.Black;
         }
         private void NieuwSpel_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -296,6 +312,6 @@ namespace werkplekleren_project_galgje
             }
         }
 
-        
+       
     }
 }

@@ -109,6 +109,10 @@ namespace werkplekleren_project_galgje
             NieuwSpel.Foreground = Brushes.Black;
             NieuwSpel.BorderBrush = Brushes.Black;
         }
+        private void Image_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Close();
+        }
 
         //methodes               
         private void StartSpel()
@@ -117,7 +121,7 @@ namespace werkplekleren_project_galgje
             AanmakenWoordInAsterix();
             InputTextBox.Text = string.Empty;            
             VWBX_RaadButton.Visibility = Visibility.Visible;
-            VerbergWoordButton.IsEnabled = false;            
+            VWBX_VerbergWoord.Visibility = Visibility.Collapsed;          
             StringBuilderOutput();
         }       
         private void timer_Tick(object sender, EventArgs e)
@@ -162,10 +166,11 @@ namespace werkplekleren_project_galgje
             stringBuilderOutputTekst.Clear();
             stringBuilderJuisteLetters.Clear();
             stringBuilderFouteLetter.Clear();
-            VerbergWoordButton.IsEnabled = true;
-            RaadButton.IsEnabled = true;
-            VWBX_RaadButton.Visibility = Visibility.Hidden;
+            VWBX_VerbergWoord.Visibility = Visibility.Visible;
+            VWBX_RaadButton.Visibility = Visibility.Collapsed;
             aantalLevens = 10;
+            seconden.Text = "10";
+            secondenAftellen = 10;
             timer.Stop();
         }
         private void AanmakenWoordInAsterix()
@@ -312,6 +317,6 @@ namespace werkplekleren_project_galgje
             }
         }
 
-       
+        
     }
 }

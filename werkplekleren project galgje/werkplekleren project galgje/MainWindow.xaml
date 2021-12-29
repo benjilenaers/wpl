@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:werkplekleren_project_galgje"
         mc:Ignorable="d"
-        Title="MainWindow" Height="500" Width="850">
+        Title="MainWindow" Height="500" Width="850" MinHeight="400" MinWidth="600" WindowStyle="None">
 
     <Grid Background="#222222">
 
@@ -25,6 +25,10 @@
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
+
+        <Viewbox Grid.Column="5" Margin="92,10,10,32">
+            <Image Source="/images/other/cross galgje.png" MouseDown="Image_MouseDown" />
+        </Viewbox>
 
         <Viewbox Grid.ColumnSpan="3" Margin="0,0,108,0" Grid.Column="2">
             <TextBox Text="Hangman" BorderThickness="0" Background="#222222"
@@ -84,24 +88,28 @@
             <TextBox Background="#333333" BorderBrush="#804c36" BorderThickness="2"
             Name="InputTextBox"           
             HorizontalAlignment="Center" Height="80" 
-            TextWrapping="Wrap" 
-            Text="" VerticalAlignment="Center" 
+            TextWrapping="Wrap" HorizontalContentAlignment="Center" 
+            VerticalContentAlignment="Center"
+            Text="" VerticalAlignment="Center" FontFamily="algerian"
             Width="450" TextAlignment="Center" FontSize="30"/>
         </Viewbox>
-        <Viewbox Grid.Row="1" Grid.ColumnSpan="3" Margin="81,22,10,31" Grid.RowSpan="4">
+        <Viewbox Grid.Row="1" Grid.ColumnSpan="3" Margin="50,10,41,43" Grid.RowSpan="4">
             <TextBox
             Name="OutputTextBlock" Background="#333333"
-            HorizontalAlignment="Left" BorderBrush="#804c36" BorderThickness="0.3"
+            BorderBrush="#804c36" BorderThickness="0.3"
             TextWrapping="Wrap" Text="" 
             VerticalAlignment="Top" FontFamily="algerian" FontSize="2.4"
             TextAlignment="Left" Width="38" Height="31"/>
         </Viewbox>
-        <Viewbox Grid.Row="1" Grid.Column="4">
+        <Viewbox Grid.Row="1" Grid.Column="3">
             <TextBox 
             Name="seconden"  Background="#333333"  FontFamily="algerian"        
-            HorizontalAlignment="Left" BorderBrush="#804c36"
-            TextWrapping="Wrap" Text="10" VerticalAlignment="Top"
+            BorderBrush="#804c36"
+            Text="10" VerticalAlignment="Top"
             Width="46" FontSize="30" FontWeight="Bold" TextAlignment="Center"/>
+        </Viewbox>
+        <Viewbox Grid.ColumnSpan="2" Grid.Column="4" Margin="10,10,36,43" Grid.Row="2" Grid.RowSpan="3">
+            <Image></Image>
         </Viewbox>
     </Grid>
 

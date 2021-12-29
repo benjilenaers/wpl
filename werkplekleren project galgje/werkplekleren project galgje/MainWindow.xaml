@@ -7,29 +7,52 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="497.128" Width="849.485">
 
-    <Grid>
-        <Viewbox>
-            <Grid>
-                <Button 
+    <Grid Background="#222222">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Button 
             Name="VerbergWoordButton"
             Content="Verberg woord" HorizontalAlignment="Left" 
             Margin="630,250,0,0" VerticalAlignment="Top" 
             Width="150" Height="64" Click="VerbergWoordButton_Click"/>
 
-                <Button 
+        <Button 
             Name="RaadButton"
             Content="Raad" HorizontalAlignment="Left" 
             Margin="630,325,0,0" VerticalAlignment="Top" 
             Width="150" Height="64" Click="RaadButton_Click" 
-            Visibility="Hidden"/>
+            Visibility="Collapsed"/>
 
-                <Button 
-            Content="Nieuw Spel" HorizontalAlignment="Left" 
-            Margin="630,175,0,0" VerticalAlignment="Top" 
-            Width="150" Height="64" RenderTransformOrigin="0.445,0.512" 
-            Click="NieuwSpelButton_Click"/>
+        <Label 
+                Name="NieuwSpel" Grid.Column="4" Grid.Row="5"
+                Content="Nieuw Spel" Background="Maroon" FontFamily="algerian"
+                VerticalContentAlignment="Center" 
+                HorizontalContentAlignment="Center" BorderBrush="Black" 
+                BorderThickness="2"                
+                Width="150" Height="64" RenderTransformOrigin="0.445,0.512" MouseDown="NieuwSpel_MouseDown" Grid.ColumnSpan="2" Margin="120,6,10,8" 
+            >
+            <Label.Effect>
+                <DropShadowEffect/>
+            </Label.Effect>
+        </Label>
 
-                <TextBox 
+        <TextBox 
             Name="InputTextBox"
             BorderBrush="Black"            
             HorizontalAlignment="Center" Height="80" 
@@ -37,20 +60,19 @@
             Text="" VerticalAlignment="Center" 
             Width="450" TextAlignment="Center" FontSize="30"/>
 
-                <TextBlock 
+        <TextBlock 
             Name="OutputTextBlock"
             HorizontalAlignment="Left" Margin="50,175,0,0" 
             TextWrapping="Wrap" Text="" 
             VerticalAlignment="Top" Height="139" Width="290"
             FontSize="20" TextAlignment="Left"/>
 
-                <TextBox 
+        <TextBox 
             Name="seconden"            
             HorizontalAlignment="Left" Height="45" Margin="546,25,0,0" 
             TextWrapping="Wrap" Text="10" VerticalAlignment="Top"
             Width="46" FontSize="30" FontWeight="Bold" TextAlignment="Center"/>
-            </Grid>
-        </Viewbox>
+
     </Grid>
 
 </Window>

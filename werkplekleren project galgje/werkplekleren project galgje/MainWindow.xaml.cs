@@ -59,7 +59,7 @@ namespace werkplekleren_project_galgje
             seconden.Text = secondenAftellen.ToString();
             InputTextBox.Text = string.Empty; 
         }
-        private void NieuwSpelButton_Click(object sender, RoutedEventArgs e)
+        private void NieuwSpel_MouseDown(object sender, MouseButtonEventArgs e)
         {
             AllesVoorEenNieuwSpel();
         }
@@ -265,5 +265,7 @@ namespace werkplekleren_project_galgje
                 seconden.Foreground = Brushes.Black;
             }
         }
+
+       
     }
 }

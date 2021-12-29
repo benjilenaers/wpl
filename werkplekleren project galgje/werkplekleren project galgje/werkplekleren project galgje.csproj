@@ -95,10 +95,21 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="images\galg\" />
+    <Resource Include="images\galg\hangman part10.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\other\cross galgje.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\galg\hangman part1.png" />
+    <Resource Include="images\galg\hangman part2.png" />
+    <Resource Include="images\galg\hangman part3.png" />
+    <Resource Include="images\galg\hangman part4.png" />
+    <Resource Include="images\galg\hangman part5.png" />
+    <Resource Include="images\galg\hangman part6.png" />
+    <Resource Include="images\galg\hangman part7.png" />
+    <Resource Include="images\galg\hangman part8.png" />
+    <Resource Include="images\galg\hangman part9.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

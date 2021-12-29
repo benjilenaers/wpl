@@ -36,6 +36,20 @@ namespace werkplekleren_project_galgje
         int secondenAftellen = 10;
         string geradenWoord;
         DispatcherTimer timer = new DispatcherTimer();
+        private Dictionary<string, string> galgjeImages =
+            new Dictionary<string, string>
+            {
+                {"1", "/images/hangman part1.png"},
+                {"2", "/images/hangman part2.png"},
+                {"3", "/images/hangman part3.png"},
+                {"4", "/images/hangman part4.png"},
+                {"5", "/images/hangman part5.png"},
+                {"6", "/images/hangman part6.png"},
+                {"7", "/images/hangman part7.png"},
+                {"8", "/images/hangman part8.png"},
+                {"9", "/images/hangman part9.png"},
+                {"10","/images/hangman part10.png"}
+            };
         public MainWindow()
         {
             InitializeComponent();

@@ -109,7 +109,7 @@
             Width="46" FontSize="30" FontWeight="Bold" TextAlignment="Center"/>
         </Viewbox>
         <Viewbox Grid.ColumnSpan="2" Grid.Column="4" Margin="10,10,36,43" Grid.Row="2" Grid.RowSpan="3">
-            <Image></Image>
+            <Image Name="galg"></Image>
         </Viewbox>
     </Grid>
 

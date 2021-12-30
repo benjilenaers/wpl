@@ -39,16 +39,16 @@ namespace werkplekleren_project_galgje
         private Dictionary<string, string> galgjeImages =
             new Dictionary<string, string>
             {
-                {"1", "/images/hangman part1.png"},
-                {"2", "/images/hangman part2.png"},
-                {"3", "/images/hangman part3.png"},
-                {"4", "/images/hangman part4.png"},
-                {"5", "/images/hangman part5.png"},
-                {"6", "/images/hangman part6.png"},
-                {"7", "/images/hangman part7.png"},
-                {"8", "/images/hangman part8.png"},
-                {"9", "/images/hangman part9.png"},
-                {"10","/images/hangman part10.png"}
+                {"1", "/images/galg/hangman part1.png"},
+                {"2", "/images/galg/hangman part2.png"},
+                {"3", "/images/galg/hangman part3.png"},
+                {"4", "/images/galg/hangman part4.png"},
+                {"5", "/images/galg/hangman part5.png"},
+                {"6", "/images/galg/hangman part6.png"},
+                {"7", "/images/galg/hangman part7.png"},
+                {"8", "/images/galg/hangman part8.png"},
+                {"9", "/images/galg/hangman part9.png"},
+                {"10","/images/galg/hangman part10.png"}
             };
         public MainWindow()
         {
@@ -161,6 +161,7 @@ namespace werkplekleren_project_galgje
                 OutputTextBlock.Text = $"Sorry maar al je levens zijn op het woord dat we zochten was {stringBuilderGeheimWoord}";
                 RaadButton.IsEnabled = false;                               
             }
+            GetImage();
         }
 
         /// <summary>
@@ -331,6 +332,33 @@ namespace werkplekleren_project_galgje
             }
         }
 
-        
+        private void GetImage()
+        {
+            switch (aantalLevens)
+            {
+                case 10: galg.Source = new BitmapImage(new Uri("/images/galg/hangman part10.png", UriKind.Relative));
+                    break;
+                case 9: galg.Source = new BitmapImage(new Uri("/images/galg/hangman part1.png", UriKind.Relative));
+                    break;
+                case 8: galg.Source = new BitmapImage(new Uri("/images/galg/hangman part2.png", UriKind.Relative));
+                    break;
+                case 7: galg.Source = new BitmapImage(new Uri("/images/galg/hangman part3.png", UriKind.Relative));
+                    break;
+                case 6: galg.Source = new BitmapImage(new Uri("/images/galg/hangman part4.png", UriKind.Relative));
+                    break;
+                case 5: galg.Source = new BitmapImage(new Uri("/images/galg/hangman part5.png", UriKind.Relative));
+                    break;
+                case 4: galg.Source = new BitmapImage(new Uri("/images/galg/hangman part6.png", UriKind.Relative));
+                    break;
+                case 3: galg.Source = new BitmapImage(new Uri("/images/galg/hangman part7.png", UriKind.Relative));
+                    break;
+                case 2: galg.Source = new BitmapImage(new Uri("/images/galg/hangman part8.png", UriKind.Relative));
+                    break;
+                case 1: galg.Source = new BitmapImage(new Uri("/images/galg/hangman part9.png", UriKind.Relative));
+                    break;
+                default: galg.Source = new BitmapImage(new Uri("/images/galg/hangman part10.png", UriKind.Relative));
+                    break;
+            }
+        }           
     }
 }

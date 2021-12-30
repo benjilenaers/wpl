@@ -36,20 +36,6 @@ namespace werkplekleren_project_galgje
         int secondenAftellen = 10;
         string geradenWoord;
         DispatcherTimer timer = new DispatcherTimer();
-        private Dictionary<string, string> galgjeImages =
-            new Dictionary<string, string>
-            {
-                {"1", "/images/galg/hangman part1.png"},
-                {"2", "/images/galg/hangman part2.png"},
-                {"3", "/images/galg/hangman part3.png"},
-                {"4", "/images/galg/hangman part4.png"},
-                {"5", "/images/galg/hangman part5.png"},
-                {"6", "/images/galg/hangman part6.png"},
-                {"7", "/images/galg/hangman part7.png"},
-                {"8", "/images/galg/hangman part8.png"},
-                {"9", "/images/galg/hangman part9.png"},
-                {"10","/images/galg/hangman part10.png"}
-            };
         public MainWindow()
         {
             InitializeComponent();
@@ -58,7 +44,7 @@ namespace werkplekleren_project_galgje
             stringBuilderJuisteLetters = new StringBuilder();
             stringBuilderFouteLetter = new StringBuilder();            
             timer.Tick += new EventHandler(timer_Tick);
-            timer.Interval = new TimeSpan(0, 0, 1);
+            timer.Interval = new TimeSpan(0, 0, 1);            
         }
         private void VerbergWoordButton_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -87,6 +73,7 @@ namespace werkplekleren_project_galgje
             secondenAftellen = 10;
             seconden.Text = secondenAftellen.ToString();
             InputTextBox.Text = string.Empty;
+            
         }
 
         private void RaadButton_MouseEnter(object sender, MouseEventArgs e)
@@ -137,6 +124,7 @@ namespace werkplekleren_project_galgje
             VWBX_RaadButton.Visibility = Visibility.Visible;
             VWBX_VerbergWoord.Visibility = Visibility.Collapsed;          
             StringBuilderOutput();
+            
         }       
         private void timer_Tick(object sender, EventArgs e)
         {            
@@ -161,6 +149,7 @@ namespace werkplekleren_project_galgje
                 OutputTextBlock.Text = $"Sorry maar al je levens zijn op het woord dat we zochten was {stringBuilderGeheimWoord}";
                 RaadButton.IsEnabled = false;                               
             }
+            
             GetImage();
         }
 
@@ -187,6 +176,7 @@ namespace werkplekleren_project_galgje
             seconden.Text = "10";
             secondenAftellen = 10;
             timer.Stop();
+            RaadButton.IsEnabled = true;
         }
         private void AanmakenWoordInAsterix()
         {
@@ -265,6 +255,7 @@ namespace werkplekleren_project_galgje
                     }
                 }
             woordInAsteriksAlsString = new string(woordInAsteriks);
+            
         }
 
         /// <summary>
@@ -290,6 +281,7 @@ namespace werkplekleren_project_galgje
                 OutputTextBlock.Text = $"{geradenWoord} is niet het woord dat we zochten, maar geef niet op je hebt nog {aantalLevens} levens.";
                 timer.Stop();
             }
+            
         }
 
         /// <summary>
@@ -305,6 +297,11 @@ namespace werkplekleren_project_galgje
             {
                 IsHetGeradenWoordJuist();
             }
+            if (woordInAsteriksAlsString == stringBuilderGeheimWoord.ToString())
+            {
+                OutputTextBlock.Text = $"Joepie het antwoord is inderdaad: {stringBuilderGeheimWoord.ToString()}";
+                timer.Stop();
+            }
         }
 
         private void TimerTellerOpNul()
@@ -316,7 +313,7 @@ namespace werkplekleren_project_galgje
                 aantalLevens--;
                 secondenAftellen = 11;
             }
-
+            GetImage();
             StringBuilderOutput();
         }
 

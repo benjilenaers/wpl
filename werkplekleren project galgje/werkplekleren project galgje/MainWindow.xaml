@@ -35,7 +35,8 @@
                  FontFamily="algerian" Foreground="Maroon"    
             ></TextBox>
         </Viewbox>
-        <Viewbox Name="VWBX_VerbergWoord" Grid.Column="3" Margin="10,70,90,28" Grid.Row="4" Grid.ColumnSpan="2" Grid.RowSpan="2">
+        <Viewbox Visibility="Collapsed" Name="VWBX_VerbergWoord" Grid.Column="3"
+                 Margin="10,70,90,28" Grid.Row="4" Grid.ColumnSpan="2" Grid.RowSpan="2">
             <Label 
             Name="VerbergWoordButton" Content="Verberg woord" Background="Maroon"
             BorderBrush="Black" BorderThickness="2" FontFamily="algerian" 
@@ -50,7 +51,8 @@
                 </Label.Effect>
             </Label>
         </Viewbox>
-        <Viewbox Name="VWBX_RaadButton" Visibility="Collapsed" Grid.Column="3" Margin="24,70,10,28" Grid.Row="4" Grid.RowSpan="2">
+        <Viewbox Name="VWBX_RaadButton" Visibility="Collapsed" Grid.Column="3" 
+                 Margin="24,70,10,28" Grid.Row="4" Grid.RowSpan="2">
             <Label 
             Name="RaadButton" VerticalContentAlignment="Center"
             HorizontalContentAlignment="Center" 
@@ -66,7 +68,8 @@
                 </Label.Effect>
             </Label>
         </Viewbox>
-        <Viewbox Name="VWBX_NieuwSpel" Grid.Column="5" Grid.Row="5" Margin="10,29,0,10">
+        <Viewbox Visibility="Collapsed" Name="VWBX_NieuwSpel" Grid.Column="5" 
+                 Grid.Row="5" Margin="10,29,0,10">
             <Label 
                 Name="NieuwSpel" 
                 Content="Nieuw Spel" Background="Maroon" FontFamily="algerian"
@@ -83,7 +86,8 @@
             </Label>
         </Viewbox>
 
-        <Viewbox Grid.ColumnSpan="2" Grid.Column="1" Margin="10,47,0,10" 
+        <Viewbox Name="VWBX_Input" Visibility="Collapsed" Grid.ColumnSpan="2" Grid.Column="1" 
+                 Margin="10,47,0,10" 
                  Grid.Row="4" Grid.RowSpan="2">
             <TextBox Background="#333333" BorderBrush="#804c36" BorderThickness="2"
             Name="InputTextBox"           
@@ -93,7 +97,8 @@
             Text="" VerticalAlignment="Center" FontFamily="algerian"
             Width="450" TextAlignment="Center" FontSize="30"/>
         </Viewbox>
-        <Viewbox Grid.Row="1" Grid.ColumnSpan="3" Margin="50,10,41,43" Grid.RowSpan="4">
+        <Viewbox Name="VWBX_Output" Visibility="Collapsed" Grid.Row="1" Grid.ColumnSpan="3"
+                 Margin="50,10,41,43" Grid.RowSpan="4">
             <TextBox
             Name="OutputTextBlock" Background="#333333"
             BorderBrush="#804c36" BorderThickness="0.3"
@@ -101,16 +106,46 @@
             VerticalAlignment="Top" FontFamily="algerian" FontSize="2.4"
             TextAlignment="Left" Width="38" Height="31"/>
         </Viewbox>
-        <Viewbox Grid.Row="1" Grid.Column="3">
+        <Viewbox Name="VWBX_Secondeningeven" Grid.Row="1" Grid.Column="3">
             <TextBox 
-            Name="seconden"  Background="#333333"  FontFamily="algerian"        
+            Name="secondeningeven" Background="#333333"  FontFamily="algerian"        
             BorderBrush="#804c36"
             Text="10" VerticalAlignment="Top"
             Width="46" FontSize="30" FontWeight="Bold" TextAlignment="Center"/>
         </Viewbox>
-        <Viewbox Grid.ColumnSpan="2" Grid.Column="4" Margin="10,10,36,43" Grid.Row="2" Grid.RowSpan="3">
+        <Viewbox Name="VWBX_seconden" Visibility="Collapsed" Grid.Row="1" Grid.Column="3">
+            <TextBox 
+            Name="seconden" Background="#333333"  FontFamily="algerian"        
+            BorderBrush="#804c36"
+            Text="" VerticalAlignment="Top"
+            Width="46" FontSize="30" FontWeight="Bold" TextAlignment="Center"/>
+        </Viewbox>
+        <Viewbox Name="VWBX_Image" Visibility="Collapsed" Grid.ColumnSpan="2" Grid.Column="4" Margin="10,10,36,43" Grid.Row="2" Grid.RowSpan="3">
             <Image Name="galg"></Image>
         </Viewbox>
+        <Viewbox Name="VWBX_speler" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2">
+            <Label Name="speler" Content="1 speler" FontFamily="algerian" Background="Maroon" 
+               BorderBrush="Black" BorderThickness="1" 
+                   MouseDown="spelerLabel_MouseDown" MouseEnter="speler_MouseEnter" MouseLeave="speler_MouseLeave">
+                <Label.Effect>
+                    <DropShadowEffect/>
+                </Label.Effect>
+            </Label>
+        </Viewbox>
+        <Viewbox Name="VWBX_spelers" Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="2">
+            <Label Name="spelers" Content="2 spelers" FontFamily="algerian" Background="Maroon" 
+               BorderBrush="Black" BorderThickness="1">
+                <Label.Effect>
+                    <DropShadowEffect/>
+                </Label.Effect>
+            </Label>
+        </Viewbox>
+
+        <TextBlock Name="infoTijd" Background="#333333" TextWrapping="Wrap"
+               Text="De tijd kan je aanpassen voor moeilijkheid deze moet tussen 5 en 20 seconden liggen" 
+               FontSize="16"  Grid.Column="4" Margin="5,5,79,54" 
+               Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="2" ></TextBlock>
+
     </Grid>
 
 </Window>

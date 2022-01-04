@@ -122,6 +122,18 @@ namespace werkplekleren_project_galgje
         private void NieuwSpel_MouseDown(object sender, MouseButtonEventArgs e)
         {
             AllesVoorEenNieuwSpel();
+            infoTijd.Visibility = Visibility.Visible;
+            VWBX_Image.Visibility = Visibility.Collapsed;
+            VWBX_NieuwSpel.Visibility = Visibility.Collapsed;
+            VWBX_RaadButton.Visibility = Visibility.Collapsed;
+            VWBX_Output.Visibility = Visibility.Collapsed;
+            VWBX_Input.Visibility = Visibility.Collapsed;
+            VWBX_speler.Visibility = Visibility.Visible;
+            VWBX_spelers.Visibility = Visibility.Visible;
+            VWBX_Secondeningeven.Visibility = Visibility.Visible;
+            VWBX_seconden.Visibility = Visibility.Collapsed;
+            VWBX_VerbergWoord.Visibility = Visibility.Collapsed;
+            VWBX_startImage.Visibility = Visibility.Visible;
         }
         private void NieuwSpel_MouseEnter(object sender, MouseEventArgs e)
         {
@@ -156,6 +168,7 @@ namespace werkplekleren_project_galgje
             VWBX_speler.Visibility = Visibility.Collapsed;
             VWBX_spelers.Visibility = Visibility.Collapsed;
             VWBX_Secondeningeven.Visibility = Visibility.Collapsed;
+            VWBX_startImage.Visibility = Visibility.Collapsed;
             VWBX_seconden.Visibility = Visibility.Visible;
         }
 
@@ -173,6 +186,37 @@ namespace werkplekleren_project_galgje
             speler.Background = Brushes.Maroon;
             speler.Foreground = Brushes.Black;
             speler.BorderBrush = Brushes.Black;
+        }
+        private void spelers_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            infoTijd.Visibility = Visibility.Collapsed;
+            VWBX_Image.Visibility = Visibility.Visible;
+            VWBX_NieuwSpel.Visibility = Visibility.Visible;
+            VWBX_Output.Visibility = Visibility.Visible;
+            VWBX_Input.Visibility = Visibility.Visible;
+            VWBX_speler.Visibility = Visibility.Collapsed;
+            VWBX_spelers.Visibility = Visibility.Collapsed;
+            VWBX_Secondeningeven.Visibility = Visibility.Collapsed;
+            VWBX_seconden.Visibility = Visibility.Visible;
+            VWBX_VerbergWoord.Visibility = Visibility.Visible;
+            VWBX_startImage.Visibility = Visibility.Collapsed;
+            seconden.Text = secondeningeven.Text;
+        }
+
+        private void spelers_MouseEnter(object sender, MouseEventArgs e)
+        {
+            Cursor = Cursors.Hand;
+            spelers.Background = Brushes.Black;
+            spelers.Foreground = Brushes.Maroon;
+            spelers.BorderBrush = Brushes.Red;
+        }
+
+        private void spelers_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Cursor = Cursors.Arrow;
+            spelers.Background = Brushes.Maroon;
+            spelers.Foreground = Brushes.Black;
+            spelers.BorderBrush = Brushes.Black;
         }
 
         //methodes               
@@ -229,14 +273,14 @@ namespace werkplekleren_project_galgje
             stringBuilderGeheimWoord.Clear();
             stringBuilderOutputTekst.Clear();
             stringBuilderJuisteLetters.Clear();
-            stringBuilderFouteLetter.Clear();
-            VWBX_VerbergWoord.Visibility = Visibility.Visible;
+            stringBuilderFouteLetter.Clear();            
             VWBX_RaadButton.Visibility = Visibility.Collapsed;
             aantalLevens = 10;
             seconden.Text = "10";
             secondenAftellen = 10;
             timer.Stop();
             RaadButton.IsEnabled = true;
+            galg.Source = new BitmapImage(new Uri("/images/galg/hangman part10.png", UriKind.Relative));
         }
         private void AanmakenWoordInAsterix()
         {
@@ -416,17 +460,11 @@ namespace werkplekleren_project_galgje
                 default: galg.Source = new BitmapImage(new Uri("/images/galg/hangman part10.png", UriKind.Relative));
                     break;
             }
-        }    
+        }
         private void RandomWoordGenerator()
         {
             int randomWoord = randomWoordGenerator.Next(galgjeWoorden.Length);
             stringBuilderGeheimWoord.Append(galgjeWoorden[randomWoord]);
         }
-        private void IngegevenSeconden()
-        {
-            secondenAftellen = Convert.ToInt32(secondeningeven.Text);
-        }
-
-       
     }
 }

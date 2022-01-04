@@ -111,14 +111,14 @@
             Name="secondeningeven" Background="#333333"  FontFamily="algerian"        
             BorderBrush="#804c36"
             Text="10" VerticalAlignment="Top"
-            Width="46" FontSize="30" FontWeight="Bold" TextAlignment="Center"/>
+            Width="50" FontSize="30" FontWeight="Bold" TextAlignment="Center"/>
         </Viewbox>
         <Viewbox Name="VWBX_seconden" Visibility="Collapsed" Grid.Row="1" Grid.Column="3">
             <TextBox 
             Name="seconden" Background="#333333"  FontFamily="algerian"        
             BorderBrush="#804c36"
             Text="" VerticalAlignment="Top"
-            Width="46" FontSize="30" FontWeight="Bold" TextAlignment="Center"/>
+            Width="50" FontSize="30" FontWeight="Bold" TextAlignment="Center"/>
         </Viewbox>
         <Viewbox Name="VWBX_Image" Visibility="Collapsed" Grid.ColumnSpan="2" Grid.Column="4" Margin="10,10,36,43" Grid.Row="2" Grid.RowSpan="3">
             <Image Name="galg"></Image>
@@ -134,7 +134,7 @@
         </Viewbox>
         <Viewbox Name="VWBX_spelers" Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="2">
             <Label Name="spelers" Content="2 spelers" FontFamily="algerian" Background="Maroon" 
-               BorderBrush="Black" BorderThickness="1">
+               BorderBrush="Black" BorderThickness="1" MouseDown="spelers_MouseDown" MouseEnter="spelers_MouseEnter" MouseLeave="spelers_MouseLeave">
                 <Label.Effect>
                     <DropShadowEffect/>
                 </Label.Effect>
@@ -145,7 +145,9 @@
                Text="De tijd kan je aanpassen voor moeilijkheid deze moet tussen 5 en 20 seconden liggen" 
                FontSize="16"  Grid.Column="4" Margin="5,5,79,54" 
                Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="2" ></TextBlock>
-
+        <Viewbox Name="VWBX_startImage" Grid.ColumnSpan="2" Margin="40,0,10,0" Grid.Row="1" Grid.RowSpan="2">
+            <Image Name="startImage" Source="/images/galg/hangman part9.png" />
+        </Viewbox>
     </Grid>
 
 </Window>

@@ -28,6 +28,7 @@ namespace werkplekleren_project_galgje
         private StringBuilder stringBuilderGeheimWoord;
         private StringBuilder stringBuilderJuisteLetters;
         private StringBuilder stringBuilderFouteLetter;
+        private StringBuilder stringBuilderTopscore;
         string woordInAsteriksAlsString;
         int aantalLevens = 10;
         char[] woordInAsteriks;
@@ -64,13 +65,16 @@ namespace werkplekleren_project_galgje
             "trotyl",
         };
         Random randomWoordGenerator = new Random();
+        string naamSpeler1;
+        string naamSpeler2;
         public MainWindow()
         {
             InitializeComponent();
             stringBuilderOutputTekst = new StringBuilder();
             stringBuilderGeheimWoord = new StringBuilder();
             stringBuilderJuisteLetters = new StringBuilder();
-            stringBuilderFouteLetter = new StringBuilder();            
+            stringBuilderFouteLetter = new StringBuilder();
+            stringBuilderTopscore = new StringBuilder();
             timer.Tick += new EventHandler(timer_Tick);
             timer.Interval = new TimeSpan(0, 0, 1);            
         }
@@ -133,7 +137,7 @@ namespace werkplekleren_project_galgje
             VWBX_Secondeningeven.Visibility = Visibility.Visible;
             VWBX_seconden.Visibility = Visibility.Collapsed;
             VWBX_VerbergWoord.Visibility = Visibility.Collapsed;
-            VWBX_startImage.Visibility = Visibility.Visible;
+            VWBX_startImage.Visibility = Visibility.Visible;           
         }
         private void NieuwSpel_MouseEnter(object sender, MouseEventArgs e)
         {
@@ -150,26 +154,27 @@ namespace werkplekleren_project_galgje
             NieuwSpel.Foreground = Brushes.Black;
             NieuwSpel.BorderBrush = Brushes.Black;
         }
-        private void Image_MouseDown(object sender, MouseButtonEventArgs e)
+        private void ImageCross_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Close();
         }
-        private void spelerLabel_MouseDown(object sender, MouseButtonEventArgs e)
+        private void ImageCross_MouseEnter(object sender, MouseEventArgs e)
         {
-            RandomWoordGenerator();
-            StartSpel();
-            timer.Start();
-            infoTijd.Visibility = Visibility.Collapsed;
-            VWBX_Image.Visibility = Visibility.Visible;
-            VWBX_NieuwSpel.Visibility = Visibility.Visible;
-            VWBX_RaadButton.Visibility = Visibility.Visible;
-            VWBX_Output.Visibility = Visibility.Visible;
-            VWBX_Input.Visibility = Visibility.Visible;
+            Cursor = Cursors.Hand;
+        }
+
+        private void ImageCross_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Cursor = Cursors.Arrow;
+        }
+        private void speler_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            VWBX_naamTextBox.Visibility = Visibility.Visible;
+            VWBX_naamTextBlock.Visibility = Visibility.Visible;
+            VWBX_StartKnop.Visibility = Visibility.Visible;
+            VWBX_startImage.Visibility = Visibility.Collapsed;
             VWBX_speler.Visibility = Visibility.Collapsed;
             VWBX_spelers.Visibility = Visibility.Collapsed;
-            VWBX_Secondeningeven.Visibility = Visibility.Collapsed;
-            VWBX_startImage.Visibility = Visibility.Collapsed;
-            VWBX_seconden.Visibility = Visibility.Visible;
         }
 
         private void speler_MouseEnter(object sender, MouseEventArgs e)
@@ -189,18 +194,14 @@ namespace werkplekleren_project_galgje
         }
         private void spelers_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            infoTijd.Visibility = Visibility.Collapsed;
-            VWBX_Image.Visibility = Visibility.Visible;
-            VWBX_NieuwSpel.Visibility = Visibility.Visible;
-            VWBX_Output.Visibility = Visibility.Visible;
-            VWBX_Input.Visibility = Visibility.Visible;
+            VWBX_naamTextBox.Visibility = Visibility.Visible;
+            VWBX_naamTextBlock.Visibility = Visibility.Visible;
+            VWBX_naamTextBlock2.Visibility = Visibility.Visible;
+            VWBX_naamTextBox2.Visibility = Visibility.Visible;
+            VWBX_StartKnop2.Visibility = Visibility.Visible;
             VWBX_speler.Visibility = Visibility.Collapsed;
             VWBX_spelers.Visibility = Visibility.Collapsed;
-            VWBX_Secondeningeven.Visibility = Visibility.Collapsed;
-            VWBX_seconden.Visibility = Visibility.Visible;
-            VWBX_VerbergWoord.Visibility = Visibility.Visible;
             VWBX_startImage.Visibility = Visibility.Collapsed;
-            seconden.Text = secondeningeven.Text;
         }
 
         private void spelers_MouseEnter(object sender, MouseEventArgs e)
@@ -218,7 +219,92 @@ namespace werkplekleren_project_galgje
             spelers.Foreground = Brushes.Black;
             spelers.BorderBrush = Brushes.Black;
         }
+        private void Startknop_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            RandomWoordGenerator();
+            StartSpel();
+            timer.Start();
+            infoTijd.Visibility = Visibility.Collapsed;
+            VWBX_Image.Visibility = Visibility.Visible;
+            VWBX_NieuwSpel.Visibility = Visibility.Visible;
+            VWBX_RaadButton.Visibility = Visibility.Visible;
+            VWBX_Output.Visibility = Visibility.Visible;
+            VWBX_Input.Visibility = Visibility.Visible;
+            VWBX_speler.Visibility = Visibility.Collapsed;
+            VWBX_spelers.Visibility = Visibility.Collapsed;
+            VWBX_Secondeningeven.Visibility = Visibility.Collapsed;
+            VWBX_startImage.Visibility = Visibility.Collapsed;
+            VWBX_seconden.Visibility = Visibility.Visible;
+            VWBX_naamTextBox.Visibility = Visibility.Collapsed;
+            VWBX_naamTextBlock.Visibility = Visibility.Collapsed;
+            VWBX_StartKnop.Visibility = Visibility.Collapsed;
+        }
 
+        private void Startknop_MouseEnter(object sender, MouseEventArgs e)
+        {
+            Cursor = Cursors.Hand;
+            Startknop.Background = Brushes.Black;
+            Startknop.Foreground = Brushes.Maroon;
+            Startknop.BorderBrush = Brushes.Red;
+        }
+
+        private void Startknop_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Cursor = Cursors.Arrow;
+            Startknop.Background = Brushes.Maroon;
+            Startknop.Foreground = Brushes.Black;
+            Startknop.BorderBrush = Brushes.Black;
+        }
+        private void Startknop2_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            infoTijd.Visibility = Visibility.Collapsed;
+            VWBX_Image.Visibility = Visibility.Visible;
+            VWBX_NieuwSpel.Visibility = Visibility.Visible;
+            VWBX_Output.Visibility = Visibility.Visible;
+            VWBX_Input.Visibility = Visibility.Visible;
+            VWBX_speler.Visibility = Visibility.Collapsed;
+            VWBX_spelers.Visibility = Visibility.Collapsed;
+            VWBX_Secondeningeven.Visibility = Visibility.Collapsed;
+            VWBX_seconden.Visibility = Visibility.Visible;
+            VWBX_VerbergWoord.Visibility = Visibility.Visible;
+            VWBX_startImage.Visibility = Visibility.Collapsed;
+            VWBX_StartKnop2.Visibility = Visibility.Collapsed;
+            VWBX_naamTextBox.Visibility = Visibility.Collapsed;
+            VWBX_naamTextBlock.Visibility = Visibility.Collapsed;
+            VWBX_naamTextBox2.Visibility = Visibility.Collapsed;
+            VWBX_naamTextBlock2.Visibility = Visibility.Collapsed;
+            seconden.Text = secondeningeven.Text;
+        }
+
+        private void Startknop2_MouseEnter(object sender, MouseEventArgs e)
+        {
+            Cursor = Cursors.Hand;
+            Startknop2.Background = Brushes.Black;
+            Startknop2.Foreground = Brushes.Maroon;
+            Startknop2.BorderBrush = Brushes.Red;
+        }
+
+        private void Startknop2_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Cursor = Cursors.Arrow;
+            Startknop2.Background = Brushes.Maroon;
+            Startknop2.Foreground = Brushes.Black;
+            Startknop2.BorderBrush = Brushes.Black;
+        }
+        private void highScoreImage_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void highScoreImage_MouseEnter(object sender, MouseEventArgs e)
+        {
+            Cursor = Cursors.Hand;
+        }
+
+        private void highScoreImage_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Cursor = Cursors.Arrow;
+        }
         //methodes               
         private void StartSpel()
         {
@@ -275,9 +361,9 @@ namespace werkplekleren_project_galgje
             stringBuilderJuisteLetters.Clear();
             stringBuilderFouteLetter.Clear();            
             VWBX_RaadButton.Visibility = Visibility.Collapsed;
-            aantalLevens = 10;
-            seconden.Text = "10";
-            secondenAftellen = 10;
+            aantalLevens = 10;                     
+            secondeningeven.Text = "10";
+            seconden.Text = secondeningeven.Text;
             timer.Stop();
             RaadButton.IsEnabled = true;
             galg.Source = new BitmapImage(new Uri("/images/galg/hangman part10.png", UriKind.Relative));
@@ -466,5 +552,14 @@ namespace werkplekleren_project_galgje
             int randomWoord = randomWoordGenerator.Next(galgjeWoorden.Length);
             stringBuilderGeheimWoord.Append(galgjeWoorden[randomWoord]);
         }
+        private void ScoreBijhouden1Speler()
+        {
+            stringBuilderTopscore.AppendLine($"{naamSpeler1} - {aantalLevens} levens ({DateTime.Now.ToLongTimeString()})");
+
+        }
+
+        
+
+        
     }
 }

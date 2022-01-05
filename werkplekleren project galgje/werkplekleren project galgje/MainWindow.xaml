@@ -6,41 +6,49 @@
         xmlns:local="clr-namespace:werkplekleren_project_galgje"
         mc:Ignorable="d"
         Title="MainWindow" Height="500" Width="850" MinHeight="400" MinWidth="600" >
+    <DockPanel>
 
-    <Grid Background="#222222">
+        <Menu DockPanel.Dock="Top" Background="#333333" >
+            <MenuItem Header="Timer" Foreground="White"></MenuItem>
+            <MenuItem Header="HighScore" Foreground="White"></MenuItem>
+            <MenuItem Header="Nieuw Spel" Foreground="White"></MenuItem>
+            <MenuItem Header="Hint" Foreground="White"></MenuItem>
+            <MenuItem Header="Afsluiten" Foreground="White"></MenuItem>
+        </Menu>
+        <Grid Name="Background" Background="#222222">
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-        </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
 
-        <Viewbox Grid.Column="5" Margin="92,10,10,32">
-            <Image Source="/images/other/cross galgje.png" 
+            <Viewbox Grid.Column="5" Margin="92,10,10,32">
+                <Image Source="/images/other/cross galgje.png" 
                    MouseDown="ImageCross_MouseDown" 
                    MouseEnter="ImageCross_MouseEnter" 
                    MouseLeave="ImageCross_MouseLeave" />
-        </Viewbox>
+            </Viewbox>
 
-        <Viewbox Grid.ColumnSpan="3" Margin="0,0,108,0" Grid.Column="2">
-            <TextBox Text="Hangman" BorderThickness="0" Background="#222222"
+            <Viewbox Grid.ColumnSpan="3" Margin="0,0,108,0" Grid.Column="2">
+                <TextBox Text="Hangman" BorderThickness="0" Background="#222222"
                  FontFamily="algerian" Foreground="Maroon"    
             ></TextBox>
-        </Viewbox>
-        <Viewbox Visibility="Collapsed" Name="VWBX_VerbergWoord" Grid.Column="3"
+            </Viewbox>
+            <Viewbox Visibility="Collapsed" Name="VWBX_VerbergWoord" Grid.Column="3"
                  Margin="10,70,90,28" Grid.Row="4" Grid.ColumnSpan="2" Grid.RowSpan="2">
-            <Label 
+                <Label 
             Name="VerbergWoordButton" Content="Verberg woord" Background="Maroon"
             BorderBrush="Black" BorderThickness="2" FontFamily="algerian" 
             VerticalContentAlignment="Center" 
@@ -49,14 +57,14 @@
             MouseEnter="VerbergWoordButton_MouseEnter" 
             MouseLeave="VerbergWoordButton_MouseLeave"
             >
-                <Label.Effect>
-                    <DropShadowEffect/>
-                </Label.Effect>
-            </Label>
-        </Viewbox>
-        <Viewbox Name="VWBX_RaadButton" Visibility="Collapsed" Grid.Column="3" 
+                    <Label.Effect>
+                        <DropShadowEffect/>
+                    </Label.Effect>
+                </Label>
+            </Viewbox>
+            <Viewbox Name="VWBX_RaadButton" Visibility="Collapsed" Grid.Column="3" 
                  Margin="24,70,10,28" Grid.Row="4" Grid.RowSpan="2">
-            <Label 
+                <Label 
             Name="RaadButton" VerticalContentAlignment="Center"
             HorizontalContentAlignment="Center" 
             Content="Raad" Background="Maroon" FontFamily="algerian"
@@ -66,14 +74,14 @@
             MouseEnter="RaadButton_MouseEnter"
             MouseLeave="RaadButton_MouseLeave"                 
             >
-                <Label.Effect>
-                    <DropShadowEffect/>
-                </Label.Effect>
-            </Label>
-        </Viewbox>
-        <Viewbox Visibility="Collapsed" Name="VWBX_NieuwSpel" Grid.Column="5" 
+                    <Label.Effect>
+                        <DropShadowEffect/>
+                    </Label.Effect>
+                </Label>
+            </Viewbox>
+            <Viewbox Visibility="Collapsed" Name="VWBX_NieuwSpel" Grid.Column="5" 
                  Grid.Row="5" Margin="10,29,0,10">
-            <Label 
+                <Label 
                 Name="NieuwSpel" 
                 Content="Nieuw Spel" Background="Maroon" FontFamily="algerian"
                 VerticalContentAlignment="Center" 
@@ -83,106 +91,106 @@
                 MouseEnter="NieuwSpel_MouseEnter"
                 MouseLeave="NieuwSpel_MouseLeave"  
             >
-                <Label.Effect>
-                    <DropShadowEffect/>
-                </Label.Effect>
-            </Label>
-        </Viewbox>
+                    <Label.Effect>
+                        <DropShadowEffect/>
+                    </Label.Effect>
+                </Label>
+            </Viewbox>
 
-        <Viewbox Name="VWBX_Input" Visibility="Collapsed" Grid.ColumnSpan="2" Grid.Column="1" 
+            <Viewbox Name="VWBX_Input" Visibility="Collapsed" Grid.ColumnSpan="2" Grid.Column="1" 
                  Margin="10,47,0,10" 
                  Grid.Row="4" Grid.RowSpan="2">
-            <TextBox Background="#333333" BorderBrush="#804c36" BorderThickness="2"
+                <TextBox Background="#333333" BorderBrush="#804c36" BorderThickness="2"
             Name="InputTextBox"           
             HorizontalAlignment="Center" Height="80" 
             TextWrapping="Wrap" HorizontalContentAlignment="Center" 
             VerticalContentAlignment="Center"
             Text="" VerticalAlignment="Center" FontFamily="algerian"
             Width="450" TextAlignment="Center" FontSize="30"/>
-        </Viewbox>
-        <Viewbox Name="VWBX_Output" Visibility="Collapsed" Grid.Row="1" Grid.ColumnSpan="3"
+            </Viewbox>
+            <Viewbox Name="VWBX_Output" Visibility="Collapsed" Grid.Row="1" Grid.ColumnSpan="3"
                  Margin="50,10,41,43" Grid.RowSpan="4">
-            <TextBox
+                <TextBox
             Name="OutputTextBlock" Background="#333333"
             BorderBrush="#804c36" BorderThickness="0.3"
             TextWrapping="Wrap" Text="" 
             VerticalAlignment="Top" FontFamily="algerian" FontSize="2.4"
             TextAlignment="Left" Width="38" Height="31"/>
-        </Viewbox>
-        <Viewbox Name="VWBX_Secondeningeven" Grid.Row="1" Grid.Column="3">
-            <TextBox 
-            Name="secondeningeven" Background="#333333"  FontFamily="algerian"        
+            </Viewbox>
+            <Viewbox Visibility="Collapsed" Name="VWBX_Secondeningeven" Grid.Row="1" Grid.Column="3">
+                <TextBox 
+            Name="secondenIngeven" Background="#333333"  FontFamily="algerian"        
             BorderBrush="#804c36"
             Text="10" VerticalAlignment="Top"
             Width="50" FontSize="30" FontWeight="Bold" TextAlignment="Center"/>
-        </Viewbox>
-        <Viewbox Name="VWBX_seconden" Visibility="Collapsed" Grid.Row="1" Grid.Column="3">
-            <TextBox 
+            </Viewbox>
+            <Viewbox Name="VWBX_seconden" Visibility="Collapsed" Grid.Row="1" Grid.Column="3">
+                <TextBox 
             Name="seconden" Background="#333333"  FontFamily="algerian"        
-            BorderBrush="#804c36"
+            BorderBrush="#804c36" IsEnabled="False"
             Text="" VerticalAlignment="Top"
             Width="50" FontSize="30" FontWeight="Bold" TextAlignment="Center"/>
-        </Viewbox>
-        <Viewbox Name="VWBX_Image" Visibility="Collapsed" Grid.ColumnSpan="2" Grid.Column="4" Margin="10,10,36,43" Grid.Row="2" Grid.RowSpan="3">
-            <Image Name="galg"></Image>
-        </Viewbox>
-        <Viewbox Name="VWBX_speler" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2">
-            <Label Name="speler" Content="1 speler" FontFamily="algerian" Background="Maroon" 
+            </Viewbox>
+            <Viewbox Name="VWBX_Image" Visibility="Collapsed" Grid.ColumnSpan="2" Grid.Column="4" Margin="10,10,36,43" Grid.Row="2" Grid.RowSpan="3">
+                <Image Name="galg"></Image>
+            </Viewbox>
+            <Viewbox Name="VWBX_speler" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2">
+                <Label Name="speler" Content="1 speler" FontFamily="algerian" Background="Maroon" 
                BorderBrush="Black" BorderThickness="1" 
                    MouseDown="speler_MouseDown" MouseEnter="speler_MouseEnter" MouseLeave="speler_MouseLeave">
-                <Label.Effect>
-                    <DropShadowEffect/>
-                </Label.Effect>
-            </Label>
-        </Viewbox>
-        <Viewbox Name="VWBX_spelers" Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="2">
-            <Label Name="spelers" Content="2 spelers" FontFamily="algerian" Background="Maroon" 
+                    <Label.Effect>
+                        <DropShadowEffect/>
+                    </Label.Effect>
+                </Label>
+            </Viewbox>
+            <Viewbox Name="VWBX_spelers" Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="2">
+                <Label Name="spelers" Content="2 spelers" FontFamily="algerian" Background="Maroon" 
                BorderBrush="Black" BorderThickness="1" MouseDown="spelers_MouseDown" MouseEnter="spelers_MouseEnter" MouseLeave="spelers_MouseLeave">
-                <Label.Effect>
-                    <DropShadowEffect/>
-                </Label.Effect>
-            </Label>
-        </Viewbox>
+                    <Label.Effect>
+                        <DropShadowEffect/>
+                    </Label.Effect>
+                </Label>
+            </Viewbox>
 
-        <TextBlock Name="infoTijd" Background="#333333" TextWrapping="Wrap"
+            <TextBlock Visibility="Collapsed" Name="infoTijd" Background="#333333" TextWrapping="Wrap"
                Text="De tijd kan je aanpassen voor moeilijkheid deze moet tussen 5 en 20 seconden liggen" 
                FontSize="16"  Grid.Column="4" Margin="5,5,79,54" 
                Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="2" ></TextBlock>
-        <Viewbox Name="VWBX_startImage" Grid.ColumnSpan="2" Margin="40,0,10,0" Grid.Row="1" Grid.RowSpan="2">
-            <Image Name="startImage" Source="/images/galg/hangman part9.png" />
-        </Viewbox>
-        <Viewbox Visibility="Collapsed" Name="VWBX_naamTextBlock" Grid.Row="1" Margin="15">
-            <TextBlock Text="Naam:" FontFamily="algerian"></TextBlock>
-        </Viewbox>
-        <Viewbox Visibility="Collapsed" Name="VWBX_naamTextBox" Grid.Row="1" Grid.Column="1" 
+            <Viewbox Name="VWBX_startImage" Grid.ColumnSpan="3" Margin="111,36,79,39" Grid.Row="1" Grid.RowSpan="3">
+                <Image Name="startImage" Source="/images/galg/hangman part9.png" />
+            </Viewbox>
+            <Viewbox Visibility="Collapsed" Name="VWBX_naamTextBlock" Grid.Row="1" Margin="15">
+                <TextBlock Text="Naam:" FontFamily="algerian"></TextBlock>
+            </Viewbox>
+            <Viewbox Visibility="Collapsed" Name="VWBX_naamTextBox" Grid.Row="1" Grid.Column="1" 
                  Grid.ColumnSpan="2" Margin="15">
-            <TextBox Name="naamInput" Text="Naam" Width="75" Background="#333333" 
+                <TextBox Name="naamInput" Text="Naam" Width="75" Background="#333333" 
                      BorderBrush="#804c36"></TextBox>
-        </Viewbox>
-        <Viewbox Name="VWBX_InfoNaam" Visibility="Collapsed" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2">
-            <TextBlock Background="#333333" Text="Hier moet de naam van de rader." Height="24"></TextBlock>
-        </Viewbox>
-        <Viewbox Visibility="Collapsed" Name="VWBX_StartKnop" Grid.Row="4" Grid.Column="3" 
+            </Viewbox>
+            <Viewbox Name="VWBX_InfoNaam" Visibility="Collapsed" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2">
+                <TextBlock Background="#333333" Text="Hier moet de naam van de rader." Height="24"></TextBlock>
+            </Viewbox>
+            <Viewbox Visibility="Collapsed" Name="VWBX_StartKnop" Grid.Row="4" Grid.Column="3" 
                  Grid.ColumnSpan="2">
-            <Label Name="Startknop" Content="Start" FontFamily="algerian" Background="Maroon" Width="60"
+                <Label Name="Startknop" Content="Start" FontFamily="algerian" Background="Maroon" Width="60"
                    HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                    BorderBrush="Black" BorderThickness="1" MouseDown="Startknop_MouseDown" MouseEnter="Startknop_MouseEnter" MouseLeave="Startknop_MouseLeave">
-                <Label.Effect>
-                    <DropShadowEffect/>
-                </Label.Effect>
-            </Label>
-        </Viewbox>
-        <Image Name="highScoreImage" Source="/images/other/highscore.png" Margin="0,0,81,43" MouseDown="highScoreImage_MouseDown" MouseEnter="highScoreImage_MouseEnter" MouseLeave="highScoreImage_MouseLeave" />
-        <Viewbox Visibility="Collapsed" Name="VWBX_StartKnop2" Grid.Row="4" Grid.Column="3" 
+                    <Label.Effect>
+                        <DropShadowEffect/>
+                    </Label.Effect>
+                </Label>
+            </Viewbox>
+            <Image Name="highScoreImage" Source="/images/other/highscore.png" Margin="0,0,81,43" MouseDown="highScoreImage_MouseDown" MouseEnter="highScoreImage_MouseEnter" MouseLeave="highScoreImage_MouseLeave" />
+            <Viewbox Visibility="Collapsed" Name="VWBX_StartKnop2" Grid.Row="4" Grid.Column="3" 
                  Grid.ColumnSpan="2">
-            <Label Name="Startknop2" Content="Start" FontFamily="algerian" Background="Maroon" Width="60"
+                <Label Name="Startknop2" Content="Start" FontFamily="algerian" Background="Maroon" Width="60"
                    HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                    BorderBrush="Black" BorderThickness="1" MouseDown="Startknop2_MouseDown" MouseEnter="Startknop2_MouseEnter" MouseLeave="Startknop2_MouseLeave">
-                <Label.Effect>
-                    <DropShadowEffect/>
-                </Label.Effect>
-            </Label>
-        </Viewbox>
-    </Grid>
-
+                    <Label.Effect>
+                        <DropShadowEffect/>
+                    </Label.Effect>
+                </Label>
+            </Viewbox>
+        </Grid>
+    </DockPanel>
 </Window>

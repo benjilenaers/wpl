@@ -101,10 +101,9 @@ namespace werkplekleren_project_galgje
         {
             timer.Start();
             VerloopVanHetSpel();
-            secondenAftellen = Convert.ToInt32(secondeningeven.Text);
+            secondenAftellen = Convert.ToInt32(secondenIngeven.Text);
             seconden.Text = secondenAftellen.ToString();
             InputTextBox.Text = string.Empty;
-            
         }
 
         private void RaadButton_MouseEnter(object sender, MouseEventArgs e)
@@ -125,7 +124,6 @@ namespace werkplekleren_project_galgje
         private void NieuwSpel_MouseDown(object sender, MouseButtonEventArgs e)
         {
             AllesVoorEenNieuwSpel();
-            infoTijd.Visibility = Visibility.Visible;
             VWBX_Image.Visibility = Visibility.Collapsed;
             VWBX_NieuwSpel.Visibility = Visibility.Collapsed;
             VWBX_RaadButton.Visibility = Visibility.Collapsed;
@@ -133,7 +131,6 @@ namespace werkplekleren_project_galgje
             VWBX_Input.Visibility = Visibility.Collapsed;
             VWBX_speler.Visibility = Visibility.Visible;
             VWBX_spelers.Visibility = Visibility.Visible;
-            VWBX_Secondeningeven.Visibility = Visibility.Visible;
             VWBX_seconden.Visibility = Visibility.Collapsed;
             VWBX_VerbergWoord.Visibility = Visibility.Collapsed;
             VWBX_startImage.Visibility = Visibility.Visible;           
@@ -175,6 +172,8 @@ namespace werkplekleren_project_galgje
             VWBX_speler.Visibility = Visibility.Collapsed;
             VWBX_spelers.Visibility = Visibility.Collapsed;
             VWBX_InfoNaam.Visibility = Visibility.Visible;
+            VWBX_Secondeningeven.Visibility = Visibility.Visible;
+            infoTijd.Visibility = Visibility.Visible;
         }
 
         private void speler_MouseEnter(object sender, MouseEventArgs e)
@@ -201,6 +200,8 @@ namespace werkplekleren_project_galgje
             VWBX_spelers.Visibility = Visibility.Collapsed;
             VWBX_startImage.Visibility = Visibility.Collapsed;
             VWBX_InfoNaam.Visibility = Visibility.Visible;
+            VWBX_Secondeningeven.Visibility = Visibility.Visible;
+            infoTijd.Visibility = Visibility.Visible;
         }
 
         private void spelers_MouseEnter(object sender, MouseEventArgs e)
@@ -239,6 +240,7 @@ namespace werkplekleren_project_galgje
             VWBX_StartKnop.Visibility = Visibility.Collapsed;
             VWBX_InfoNaam.Visibility = Visibility.Collapsed;
             naamSpeler = naamInput.Text;
+            secondenAftellen = Convert.ToInt32(secondenIngeven.Text);
         }
 
         private void Startknop_MouseEnter(object sender, MouseEventArgs e)
@@ -275,6 +277,7 @@ namespace werkplekleren_project_galgje
             VWBX_VerbergWoord.Visibility = Visibility.Visible;
             VWBX_StartKnop2.Visibility = Visibility.Collapsed;
             naamSpeler = naamInput.Text;
+            secondenAftellen = Convert.ToInt32(secondenIngeven.Text);
         }
 
         private void Startknop2_MouseEnter(object sender, MouseEventArgs e)
@@ -310,13 +313,13 @@ namespace werkplekleren_project_galgje
         //methodes               
         private void StartSpel()
         {
+            DynamischeTimer();
             stringBuilderGeheimWoord.Append(InputTextBox.Text);
             AanmakenWoordInAsterix();
             InputTextBox.Text = string.Empty;            
             VWBX_RaadButton.Visibility = Visibility.Visible;
             VWBX_VerbergWoord.Visibility = Visibility.Collapsed;          
-            StringBuilderOutput();
-            secondenAftellen = Convert.ToInt32(secondeningeven.Text);
+            StringBuilderOutput();            
         }
         private void timer_Tick(object sender, EventArgs e)
         {
@@ -364,8 +367,8 @@ namespace werkplekleren_project_galgje
             stringBuilderFouteLetter.Clear();            
             VWBX_RaadButton.Visibility = Visibility.Collapsed;
             aantalLevens = 10;                     
-            secondeningeven.Text = "10";
-            seconden.Text = secondeningeven.Text;
+            secondenIngeven.Text = "10";
+            seconden.Text = secondenIngeven.Text;
             timer.Stop();
             RaadButton.IsEnabled = true;
             galg.Source = new BitmapImage(new Uri("/images/galg/hangman part10.png", UriKind.Relative));
@@ -505,7 +508,13 @@ namespace werkplekleren_project_galgje
             if (secondenAftellen == 0)
             {
                 aantalLevens--;
-                secondenAftellen = Convert.ToInt32(secondeningeven.Text) + 1;
+                secondenAftellen = Convert.ToInt32(secondenIngeven.Text) + 1;
+                Background.Background = Brushes.Red;                
+            }
+            else
+            {
+                //https://stackoverflow.com/questions/34562677/how-do-i-add-a-hex-code-to-brushes-on-c-sharp-wpf gevonden op deze site
+                Background.Background = (Brush)(new BrushConverter().ConvertFrom("#222222"));
             }
             GetImage();
             StringBuilderOutput();
@@ -560,5 +569,40 @@ namespace werkplekleren_project_galgje
         {
             stringBuilderTopscore.AppendLine($"{naamSpeler} - {aantalLevens} levens ({DateTime.Now.ToLongTimeString()})");
         }
+
+        /// <summary>
+        /// zorgt ervoor dat wanneer er iets niet klopt aan de tijd deze naar defaultwaarde 10 gaat en dan het spel start
+        /// </summary>
+        private void DynamischeTimer()
+        {
+
+            try
+            {
+                if (Convert.ToInt64(secondenIngeven.Text) > 20)
+                {
+                    throw new Exception(
+                    "Het ingegeven getal is groter dan 20 en wordt terug op 10 gezet");
+                }
+                if (Convert.ToInt64(secondenIngeven.Text) < 5)
+                {
+                    throw new Exception(
+                    "Het ingegeven getal is kleiner dan 5 en wordt terug op 10 gezet");
+                }                
+                
+            }
+            catch (FormatException exception)
+            {
+                MessageBox.Show($"Er is iets fout gelopen: {exception.Message}", "Dit was geen getal", MessageBoxButton.OK, MessageBoxImage.Error);
+                secondenAftellen = 10;
+
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show($"De input was niet correct: {exception.Message}", "Dit getal is te groot of te klein", MessageBoxButton.OK, MessageBoxImage.Warning);
+                secondenAftellen = 10;
+            }
+            
+
+        }   
     }
 }

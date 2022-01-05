@@ -156,16 +156,11 @@
         </Viewbox>
         <Viewbox Visibility="Collapsed" Name="VWBX_naamTextBox" Grid.Row="1" Grid.Column="1" 
                  Grid.ColumnSpan="2" Margin="15">
-            <TextBox Name="naamInput" Width="75" Background="#333333" 
+            <TextBox Name="naamInput" Text="Naam" Width="75" Background="#333333" 
                      BorderBrush="#804c36"></TextBox>
         </Viewbox>
-        <Viewbox Visibility="Collapsed" Name="VWBX_naamTextBlock2" Grid.Row="3" Margin="15">
-            <TextBlock Text="Naam:" FontFamily="algerian"></TextBlock>
-        </Viewbox>
-        <Viewbox Visibility="Collapsed" Name="VWBX_naamTextBox2" Grid.Row="3" Grid.Column="1" 
-                 Grid.ColumnSpan="2" Margin="15">
-            <TextBox Name="naamInput2" Width="75" Background="#333333" 
-                     BorderBrush="#804c36"></TextBox>
+        <Viewbox Name="VWBX_InfoNaam" Visibility="Collapsed" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2">
+            <TextBlock Background="#333333" Text="Hier moet de naam van de rader." Height="24"></TextBlock>
         </Viewbox>
         <Viewbox Visibility="Collapsed" Name="VWBX_StartKnop" Grid.Row="4" Grid.Column="3" 
                  Grid.ColumnSpan="2">
@@ -177,18 +172,17 @@
                 </Label.Effect>
             </Label>
         </Viewbox>
+        <Image Name="highScoreImage" Source="/images/other/highscore.png" Margin="0,0,81,43" MouseDown="highScoreImage_MouseDown" MouseEnter="highScoreImage_MouseEnter" MouseLeave="highScoreImage_MouseLeave" />
         <Viewbox Visibility="Collapsed" Name="VWBX_StartKnop2" Grid.Row="4" Grid.Column="3" 
                  Grid.ColumnSpan="2">
             <Label Name="Startknop2" Content="Start" FontFamily="algerian" Background="Maroon" Width="60"
                    HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                   BorderBrush="Black" BorderThickness="1" MouseDown="Startknop2_MouseDown" MouseEnter="Startknop2_MouseEnter" MouseLeave="Startknop2_MouseLeave" >
+                   BorderBrush="Black" BorderThickness="1" MouseDown="Startknop2_MouseDown" MouseEnter="Startknop2_MouseEnter" MouseLeave="Startknop2_MouseLeave">
                 <Label.Effect>
                     <DropShadowEffect/>
                 </Label.Effect>
             </Label>
         </Viewbox>
-        <Image Name="highScoreImage" Source="/images/other/highscore.png" Margin="0,0,81,43" MouseDown="highScoreImage_MouseDown" MouseEnter="highScoreImage_MouseEnter" MouseLeave="highScoreImage_MouseLeave" />
-
     </Grid>
 
 </Window>

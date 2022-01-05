@@ -65,8 +65,7 @@ namespace werkplekleren_project_galgje
             "trotyl",
         };
         Random randomWoordGenerator = new Random();
-        string naamSpeler1;
-        string naamSpeler2;
+        string naamSpeler;
         public MainWindow()
         {
             InitializeComponent();
@@ -175,6 +174,7 @@ namespace werkplekleren_project_galgje
             VWBX_startImage.Visibility = Visibility.Collapsed;
             VWBX_speler.Visibility = Visibility.Collapsed;
             VWBX_spelers.Visibility = Visibility.Collapsed;
+            VWBX_InfoNaam.Visibility = Visibility.Visible;
         }
 
         private void speler_MouseEnter(object sender, MouseEventArgs e)
@@ -196,12 +196,11 @@ namespace werkplekleren_project_galgje
         {
             VWBX_naamTextBox.Visibility = Visibility.Visible;
             VWBX_naamTextBlock.Visibility = Visibility.Visible;
-            VWBX_naamTextBlock2.Visibility = Visibility.Visible;
-            VWBX_naamTextBox2.Visibility = Visibility.Visible;
             VWBX_StartKnop2.Visibility = Visibility.Visible;
             VWBX_speler.Visibility = Visibility.Collapsed;
             VWBX_spelers.Visibility = Visibility.Collapsed;
             VWBX_startImage.Visibility = Visibility.Collapsed;
+            VWBX_InfoNaam.Visibility = Visibility.Visible;
         }
 
         private void spelers_MouseEnter(object sender, MouseEventArgs e)
@@ -238,6 +237,8 @@ namespace werkplekleren_project_galgje
             VWBX_naamTextBox.Visibility = Visibility.Collapsed;
             VWBX_naamTextBlock.Visibility = Visibility.Collapsed;
             VWBX_StartKnop.Visibility = Visibility.Collapsed;
+            VWBX_InfoNaam.Visibility = Visibility.Collapsed;
+            naamSpeler = naamInput.Text;
         }
 
         private void Startknop_MouseEnter(object sender, MouseEventArgs e)
@@ -265,15 +266,15 @@ namespace werkplekleren_project_galgje
             VWBX_speler.Visibility = Visibility.Collapsed;
             VWBX_spelers.Visibility = Visibility.Collapsed;
             VWBX_Secondeningeven.Visibility = Visibility.Collapsed;
-            VWBX_seconden.Visibility = Visibility.Visible;
-            VWBX_VerbergWoord.Visibility = Visibility.Visible;
             VWBX_startImage.Visibility = Visibility.Collapsed;
-            VWBX_StartKnop2.Visibility = Visibility.Collapsed;
+            VWBX_seconden.Visibility = Visibility.Visible;
             VWBX_naamTextBox.Visibility = Visibility.Collapsed;
             VWBX_naamTextBlock.Visibility = Visibility.Collapsed;
-            VWBX_naamTextBox2.Visibility = Visibility.Collapsed;
-            VWBX_naamTextBlock2.Visibility = Visibility.Collapsed;
-            seconden.Text = secondeningeven.Text;
+            VWBX_StartKnop.Visibility = Visibility.Collapsed;
+            VWBX_InfoNaam.Visibility = Visibility.Collapsed;
+            VWBX_VerbergWoord.Visibility = Visibility.Visible;
+            VWBX_StartKnop2.Visibility = Visibility.Collapsed;
+            naamSpeler = naamInput.Text;
         }
 
         private void Startknop2_MouseEnter(object sender, MouseEventArgs e)
@@ -293,7 +294,7 @@ namespace werkplekleren_project_galgje
         }
         private void highScoreImage_MouseDown(object sender, MouseButtonEventArgs e)
         {
-
+            MessageBoxResult Highscores = MessageBox.Show(stringBuilderTopscore.ToString(), "Highscores", MessageBoxButton.OK);
         }
 
         private void highScoreImage_MouseEnter(object sender, MouseEventArgs e)
@@ -305,6 +306,7 @@ namespace werkplekleren_project_galgje
         {
             Cursor = Cursors.Arrow;
         }
+        
         //methodes               
         private void StartSpel()
         {
@@ -461,8 +463,9 @@ namespace werkplekleren_project_galgje
 
             if (geradenWoord == stringBuilderGeheimWoord.ToString())
             {
+                ScoreBijhoudenSpeler();
                 RaadButton.IsEnabled = false;
-                OutputTextBlock.Text = $"Joepie het antwoord is inderdaad: {geradenWoord}";
+                OutputTextBlock.Text = $"Joepie het antwoord is inderdaad: {geradenWoord}";                
                 timer.Stop();
             }
             else if (geradenWoord != stringBuilderGeheimWoord.ToString())
@@ -491,6 +494,7 @@ namespace werkplekleren_project_galgje
             {
                 OutputTextBlock.Text = $"Joepie het antwoord is inderdaad: {stringBuilderGeheimWoord.ToString()}";
                 timer.Stop();
+                ScoreBijhoudenSpeler();
             }
         }
 
@@ -552,14 +556,9 @@ namespace werkplekleren_project_galgje
             int randomWoord = randomWoordGenerator.Next(galgjeWoorden.Length);
             stringBuilderGeheimWoord.Append(galgjeWoorden[randomWoord]);
         }
-        private void ScoreBijhouden1Speler()
+        private void ScoreBijhoudenSpeler()
         {
-            stringBuilderTopscore.AppendLine($"{naamSpeler1} - {aantalLevens} levens ({DateTime.Now.ToLongTimeString()})");
-
+            stringBuilderTopscore.AppendLine($"{naamSpeler} - {aantalLevens} levens ({DateTime.Now.ToLongTimeString()})");
         }
-
-        
-
-        
     }
 }

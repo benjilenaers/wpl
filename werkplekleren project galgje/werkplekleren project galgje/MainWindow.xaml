@@ -10,9 +10,12 @@
 
         <Menu DockPanel.Dock="Top" Background="#333333" >
             <MenuItem Name="TimerMenu" Header="Timer" Foreground="White" Click="TimerMenu_Click"></MenuItem>
-            <MenuItem Name="HighScoreMenu" Header="HighScore" Foreground="White" Click="HighScoreMenu_Click"></MenuItem>
+            <MenuItem Name="HighScoreMenu" Header="HighScore Opvragen" Foreground="White">
+                <TextBox Name="NaamHighscoreInputBox" FontSize="16" Text="naam" KeyDown="NaamHighscoreInputBox_KeyDown">
+                </TextBox>
+            </MenuItem>
             <MenuItem Name="NieuwspelMenu" Header="Nieuw Spel" Foreground="White" Click="NieuwspelMenu_Click" ></MenuItem>
-            <MenuItem Header="Hint" Foreground="White"></MenuItem>
+            <MenuItem IsEnabled="False" Name="Hintmenu" Header="Hint" Foreground="White" Click="Hintmenu_Click" IsCheckable="True"></MenuItem>
             <MenuItem Name="AfsluitenMenu" Header="Afsluiten" Foreground="White" Click="AfsluitenMenuItem_Click"></MenuItem>
         </Menu>
         <Grid Name="Background" Background="#222222">
@@ -117,7 +120,7 @@
             VerticalAlignment="Top" FontFamily="algerian" FontSize="2.4"
             TextAlignment="Left" Width="38" Height="31"/>
             </Viewbox>
-            <Viewbox Visibility="Collapsed" Name="VWBX_Secondeningeven" Grid.Row="1" Grid.Column="3">
+            <Viewbox Visibility="Collapsed"  Name="VWBX_Secondeningeven" Grid.Row="1" Grid.Column="3">
                 <TextBox 
             Name="secondenIngeven" Background="#333333"  FontFamily="algerian"        
             BorderBrush="#804c36"
@@ -186,6 +189,14 @@
                 <Label Name="Startknop2" Content="Start" FontFamily="algerian" Background="Maroon" Width="60"
                    HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                    BorderBrush="Black" BorderThickness="1" MouseDown="Startknop2_MouseDown" MouseEnter="Startknop2_MouseEnter" MouseLeave="Startknop2_MouseLeave">
+                    <Label.Effect>
+                        <DropShadowEffect/>
+                    </Label.Effect>
+                </Label>
+            </Viewbox>
+            <Viewbox Visibility="Collapsed" Name="VWBX_OK" Grid.Row="1" Grid.Column="4" Margin="0,36,90,0">
+                <Label Name="ok" Background="Maroon" Content="ok" FontFamily="algerian" 
+                       BorderThickness="1" BorderBrush="Black" MouseDown="ok_MouseDown" MouseEnter="ok_MouseEnter" MouseLeave="ok_MouseLeave"  >
                     <Label.Effect>
                         <DropShadowEffect/>
                     </Label.Effect>

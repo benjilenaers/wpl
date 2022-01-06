@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using Microsoft.VisualBasic;
 
 namespace werkplekleren_project_galgje
 {
@@ -30,6 +31,7 @@ namespace werkplekleren_project_galgje
         private StringBuilder stringBuilderJuisteLetters;
         private StringBuilder stringBuilderFouteLetter;
         private StringBuilder stringBuilderTopscore;
+        private StringBuilder stringBuilderTopscoreOpvragen;
         string woordInAsteriksAlsString;
         int aantalLevens = 10;
         char[] woordInAsteriks;
@@ -67,6 +69,12 @@ namespace werkplekleren_project_galgje
         };
         Random randomWoordGenerator = new Random();
         string naamSpeler;
+        string naamHighscore;
+        string highScoreString;
+        List<string> highScoreList;
+        List<char> hintLetter;
+        Random randomHintLetterGenerator = new Random();
+        char randomHintLetter;
         #endregion
         public MainWindow()
         {
@@ -76,14 +84,18 @@ namespace werkplekleren_project_galgje
             stringBuilderJuisteLetters = new StringBuilder();
             stringBuilderFouteLetter = new StringBuilder();
             stringBuilderTopscore = new StringBuilder();
+            stringBuilderTopscoreOpvragen = new StringBuilder();
             timer.Tick += new EventHandler(timer_Tick);
-            timer.Interval = new TimeSpan(0, 0, 1);            
+            timer.Interval = new TimeSpan(0, 0, 1);
+            highScoreList = new List<string>();
+            hintLetter = new List<char> { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
         }
         #region knoppen
         private void VerbergWoordButton_MouseDown(object sender, MouseButtonEventArgs e)
         {
             StartSpel();
             timer.Start();
+            Hintmenu.IsEnabled = true;
         }
         private void VerbergWoordButton_MouseEnter(object sender, MouseEventArgs e)
         {
@@ -232,7 +244,9 @@ namespace werkplekleren_project_galgje
             VWBX_naamTextBlock.Visibility = Visibility.Collapsed;
             VWBX_StartKnop.Visibility = Visibility.Collapsed;
             VWBX_InfoNaam.Visibility = Visibility.Collapsed;
-            naamSpeler = naamInput.Text;            
+            naamSpeler = naamInput.Text;
+            TimerMenu.IsEnabled = false;
+            Hintmenu.IsEnabled = true;
         }
 
         private void Startknop_MouseEnter(object sender, MouseEventArgs e)
@@ -269,6 +283,7 @@ namespace werkplekleren_project_galgje
             VWBX_VerbergWoord.Visibility = Visibility.Visible;
             VWBX_StartKnop2.Visibility = Visibility.Collapsed;
             naamSpeler = naamInput.Text;
+            TimerMenu.IsEnabled = false;
         }
 
         private void Startknop2_MouseEnter(object sender, MouseEventArgs e)
@@ -288,7 +303,7 @@ namespace werkplekleren_project_galgje
         }
         private void highScoreImage_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            MessageBoxResult Highscores = MessageBox.Show(stringBuilderTopscore.ToString(), "Highscores", MessageBoxButton.OK);
+            MessageBoxResult HighscoresIedereen = MessageBox.Show(stringBuilderTopscore.ToString(), "Highscores", MessageBoxButton.OK);
         }
 
         private void highScoreImage_MouseEnter(object sender, MouseEventArgs e)
@@ -300,6 +315,28 @@ namespace werkplekleren_project_galgje
         {
             Cursor = Cursors.Arrow;
         }
+        private void ok_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            DynamischeTimer();
+            VWBX_Secondeningeven.Visibility = Visibility.Collapsed;
+            VWBX_OK.Visibility = Visibility.Collapsed;
+        }
+
+        private void ok_MouseEnter(object sender, MouseEventArgs e)
+        {
+            Cursor = Cursors.Hand;
+            ok.Background = Brushes.Black;
+            ok.Foreground = Brushes.Maroon;
+            ok.BorderBrush = Brushes.Red;
+        }
+
+        private void ok_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Cursor = Cursors.Arrow;
+            ok.Background = Brushes.Maroon;
+            ok.Foreground = Brushes.Black;
+            ok.BorderBrush = Brushes.Black;
+        }
         #endregion
         #region MenuKnoppen
         private void AfsluitenMenuItem_Click(object sender, RoutedEventArgs e)
@@ -309,17 +346,28 @@ namespace werkplekleren_project_galgje
         private void NieuwspelMenu_Click(object sender, RoutedEventArgs e)
         {
             AllesVoorEenNieuwSpel();
-        }
-        private void HighScoreMenu_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBoxResult Highscores = MessageBox.Show(stringBuilderTopscore.ToString(), "Highscores", MessageBoxButton.OK);
-        }
+            VWBX_StartKnop2.Visibility = Visibility.Collapsed;
+            VWBX_StartKnop.Visibility = Visibility.Collapsed;
+        }        
         private void TimerMenu_Click(object sender, RoutedEventArgs e)
         {
-
+            VWBX_Secondeningeven.Visibility = Visibility.Visible;
+            VWBX_OK.Visibility = Visibility.Visible;
+        }
+        private void Hintmenu_Click(object sender, RoutedEventArgs e)
+        {
+            HintMethode();
+            MessageBoxResult hintMessageBox = MessageBox.Show("Deze letter staat NIET in het woord:" + randomHintLetter.ToString(), "Hint", MessageBoxButton.OK);
+            Hintmenu.IsChecked = true;
         }
         #endregion
-
+        private void NaamHighscoreInputBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+            {
+                HighScoresOpvragen();
+            }
+        }
         #region Methodes               
         private void StartSpel()
         {
@@ -393,6 +441,12 @@ namespace werkplekleren_project_galgje
             VWBX_seconden.Visibility = Visibility.Collapsed;
             VWBX_VerbergWoord.Visibility = Visibility.Collapsed;
             VWBX_startImage.Visibility = Visibility.Visible;
+            TimerMenu.IsEnabled = true;
+            VWBX_Secondeningeven.Visibility = Visibility.Collapsed;
+            VWBX_OK.Visibility = Visibility.Collapsed;
+            hintLetter = new List<char> { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
+            Hintmenu.IsEnabled = false;
+            Hintmenu.IsChecked = false;
         }
         private void AanmakenWoordInAsterix()
         {
@@ -487,7 +541,7 @@ namespace werkplekleren_project_galgje
 
             if (geradenWoord == stringBuilderGeheimWoord.ToString())
             {
-                ScoreBijhoudenSpeler();
+                WanneerHintGeenHighScore();
                 RaadButton.IsEnabled = false;
                 OutputTextBlock.Text = $"Joepie het antwoord is inderdaad: {geradenWoord}";                
                 timer.Stop();
@@ -518,7 +572,7 @@ namespace werkplekleren_project_galgje
             {
                 OutputTextBlock.Text = $"Joepie het antwoord is inderdaad: {stringBuilderGeheimWoord.ToString()}";
                 timer.Stop();
-                ScoreBijhoudenSpeler();
+                WanneerHintGeenHighScore();
             }
         }
 
@@ -589,6 +643,8 @@ namespace werkplekleren_project_galgje
         private void ScoreBijhoudenSpeler()
         {
             stringBuilderTopscore.AppendLine($"{naamSpeler} - {aantalLevens} levens ({DateTime.Now.ToLongTimeString()})");
+            highScoreString = ($"{naamSpeler} - {aantalLevens} levens ({DateTime.Now.ToLongTimeString()})");
+            highScoreList.Add(highScoreString);
         }
 
         /// <summary>
@@ -624,9 +680,53 @@ namespace werkplekleren_project_galgje
                 secondenAftellen = 10;
             }
         }
+        private void HighScoresOpvragen()
+        {
+            naamHighscore = NaamHighscoreInputBox.Text;
+            
+            for (int i = 0; i < highScoreList.Count; i++)
+            {
+                if (highScoreList[i].Contains(naamHighscore))
+                {
+                    stringBuilderTopscoreOpvragen.AppendLine(highScoreList[i]);
+                }
+            }           
 
+            MessageBoxResult highScoresOpvragenMessageBox = MessageBox.Show(stringBuilderTopscoreOpvragen.ToString(), "Highscores", MessageBoxButton.OK);
 
+            if (highScoresOpvragenMessageBox == MessageBoxResult.OK)
+            {
+                stringBuilderTopscoreOpvragen.Clear();
+            }
+        }
 
+        private void HintMethode()
+        {
+            string woordConverrsieNaarString = stringBuilderGeheimWoord.ToString();
+
+            for (int i = 0; i < stringBuilderGeheimWoord.Length; i++)
+            {
+                for (int j = 0; j < hintLetter.Count; j++)
+                {
+                    if (woordConverrsieNaarString.Contains(hintLetter[j]))
+                    {
+                        hintLetter.RemoveAt(j);
+                    };
+                }
+                
+                
+            }
+            int randomHintLetterIndex = randomHintLetterGenerator.Next(hintLetter.Count);
+            randomHintLetter = hintLetter[randomHintLetterIndex];
+        }
+
+        private void WanneerHintGeenHighScore()
+        {
+            if (Hintmenu.IsChecked == false)
+            {
+                ScoreBijhoudenSpeler();
+            }
+        }
 
         #endregion
 

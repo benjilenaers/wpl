@@ -9,11 +9,11 @@
     <DockPanel>
 
         <Menu DockPanel.Dock="Top" Background="#333333" >
-            <MenuItem Header="Timer" Foreground="White"></MenuItem>
-            <MenuItem Header="HighScore" Foreground="White"></MenuItem>
-            <MenuItem Header="Nieuw Spel" Foreground="White"></MenuItem>
+            <MenuItem Name="TimerMenu" Header="Timer" Foreground="White" Click="TimerMenu_Click"></MenuItem>
+            <MenuItem Name="HighScoreMenu" Header="HighScore" Foreground="White" Click="HighScoreMenu_Click"></MenuItem>
+            <MenuItem Name="NieuwspelMenu" Header="Nieuw Spel" Foreground="White" Click="NieuwspelMenu_Click" ></MenuItem>
             <MenuItem Header="Hint" Foreground="White"></MenuItem>
-            <MenuItem Header="Afsluiten" Foreground="White"></MenuItem>
+            <MenuItem Name="AfsluitenMenu" Header="Afsluiten" Foreground="White" Click="AfsluitenMenuItem_Click"></MenuItem>
         </Menu>
         <Grid Name="Background" Background="#222222">
 
@@ -128,7 +128,7 @@
                 <TextBox 
             Name="seconden" Background="#333333"  FontFamily="algerian"        
             BorderBrush="#804c36" IsEnabled="False"
-            Text="" VerticalAlignment="Top"
+            VerticalAlignment="Top"
             Width="50" FontSize="30" FontWeight="Bold" TextAlignment="Center"/>
             </Viewbox>
             <Viewbox Name="VWBX_Image" Visibility="Collapsed" Grid.ColumnSpan="2" Grid.Column="4" Margin="10,10,36,43" Grid.Row="2" Grid.RowSpan="3">

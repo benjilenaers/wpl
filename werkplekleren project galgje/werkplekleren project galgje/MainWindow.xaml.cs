@@ -23,7 +23,8 @@ namespace werkplekleren_project_galgje
 
 
     public partial class MainWindow : Window
-    {        
+    {
+        #region declaratie
         private StringBuilder stringBuilderOutputTekst;
         private StringBuilder stringBuilderGeheimWoord;
         private StringBuilder stringBuilderJuisteLetters;
@@ -66,6 +67,7 @@ namespace werkplekleren_project_galgje
         };
         Random randomWoordGenerator = new Random();
         string naamSpeler;
+        #endregion
         public MainWindow()
         {
             InitializeComponent();
@@ -77,6 +79,7 @@ namespace werkplekleren_project_galgje
             timer.Tick += new EventHandler(timer_Tick);
             timer.Interval = new TimeSpan(0, 0, 1);            
         }
+        #region knoppen
         private void VerbergWoordButton_MouseDown(object sender, MouseButtonEventArgs e)
         {
             StartSpel();
@@ -123,17 +126,7 @@ namespace werkplekleren_project_galgje
         }
         private void NieuwSpel_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            AllesVoorEenNieuwSpel();
-            VWBX_Image.Visibility = Visibility.Collapsed;
-            VWBX_NieuwSpel.Visibility = Visibility.Collapsed;
-            VWBX_RaadButton.Visibility = Visibility.Collapsed;
-            VWBX_Output.Visibility = Visibility.Collapsed;
-            VWBX_Input.Visibility = Visibility.Collapsed;
-            VWBX_speler.Visibility = Visibility.Visible;
-            VWBX_spelers.Visibility = Visibility.Visible;
-            VWBX_seconden.Visibility = Visibility.Collapsed;
-            VWBX_VerbergWoord.Visibility = Visibility.Collapsed;
-            VWBX_startImage.Visibility = Visibility.Visible;           
+            AllesVoorEenNieuwSpel();            
         }
         private void NieuwSpel_MouseEnter(object sender, MouseEventArgs e)
         {
@@ -220,7 +213,7 @@ namespace werkplekleren_project_galgje
             spelers.BorderBrush = Brushes.Black;
         }
         private void Startknop_MouseDown(object sender, MouseButtonEventArgs e)
-        {
+        {           
             RandomWoordGenerator();
             StartSpel();
             timer.Start();
@@ -239,8 +232,7 @@ namespace werkplekleren_project_galgje
             VWBX_naamTextBlock.Visibility = Visibility.Collapsed;
             VWBX_StartKnop.Visibility = Visibility.Collapsed;
             VWBX_InfoNaam.Visibility = Visibility.Collapsed;
-            naamSpeler = naamInput.Text;
-            secondenAftellen = Convert.ToInt32(secondenIngeven.Text);
+            naamSpeler = naamInput.Text;            
         }
 
         private void Startknop_MouseEnter(object sender, MouseEventArgs e)
@@ -277,7 +269,6 @@ namespace werkplekleren_project_galgje
             VWBX_VerbergWoord.Visibility = Visibility.Visible;
             VWBX_StartKnop2.Visibility = Visibility.Collapsed;
             naamSpeler = naamInput.Text;
-            secondenAftellen = Convert.ToInt32(secondenIngeven.Text);
         }
 
         private void Startknop2_MouseEnter(object sender, MouseEventArgs e)
@@ -309,8 +300,27 @@ namespace werkplekleren_project_galgje
         {
             Cursor = Cursors.Arrow;
         }
-        
-        //methodes               
+        #endregion
+        #region MenuKnoppen
+        private void AfsluitenMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+        private void NieuwspelMenu_Click(object sender, RoutedEventArgs e)
+        {
+            AllesVoorEenNieuwSpel();
+        }
+        private void HighScoreMenu_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult Highscores = MessageBox.Show(stringBuilderTopscore.ToString(), "Highscores", MessageBoxButton.OK);
+        }
+        private void TimerMenu_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        #endregion
+
+        #region Methodes               
         private void StartSpel()
         {
             DynamischeTimer();
@@ -319,7 +329,8 @@ namespace werkplekleren_project_galgje
             InputTextBox.Text = string.Empty;            
             VWBX_RaadButton.Visibility = Visibility.Visible;
             VWBX_VerbergWoord.Visibility = Visibility.Collapsed;          
-            StringBuilderOutput();            
+            StringBuilderOutput();   
+            
         }
         private void timer_Tick(object sender, EventArgs e)
         {
@@ -372,6 +383,16 @@ namespace werkplekleren_project_galgje
             timer.Stop();
             RaadButton.IsEnabled = true;
             galg.Source = new BitmapImage(new Uri("/images/galg/hangman part10.png", UriKind.Relative));
+            VWBX_Image.Visibility = Visibility.Collapsed;
+            VWBX_NieuwSpel.Visibility = Visibility.Collapsed;
+            VWBX_RaadButton.Visibility = Visibility.Collapsed;
+            VWBX_Output.Visibility = Visibility.Collapsed;
+            VWBX_Input.Visibility = Visibility.Collapsed;
+            VWBX_speler.Visibility = Visibility.Visible;
+            VWBX_spelers.Visibility = Visibility.Visible;
+            VWBX_seconden.Visibility = Visibility.Collapsed;
+            VWBX_VerbergWoord.Visibility = Visibility.Collapsed;
+            VWBX_startImage.Visibility = Visibility.Visible;
         }
         private void AanmakenWoordInAsterix()
         {
@@ -587,8 +608,9 @@ namespace werkplekleren_project_galgje
                 {
                     throw new Exception(
                     "Het ingegeven getal is kleiner dan 5 en wordt terug op 10 gezet");
-                }                
-                
+                }
+                secondenAftellen = Convert.ToInt32(secondenIngeven.Text);
+                seconden.Text = Convert.ToString(secondenAftellen);
             }
             catch (FormatException exception)
             {
@@ -601,8 +623,13 @@ namespace werkplekleren_project_galgje
                 MessageBox.Show($"De input was niet correct: {exception.Message}", "Dit getal is te groot of te klein", MessageBoxButton.OK, MessageBoxImage.Warning);
                 secondenAftellen = 10;
             }
-            
+        }
 
-        }   
+
+
+
+        #endregion
+
+        
     }
 }

@@ -1,0 +1,33 @@
+.totalBackGround{
+    background: #222222;
+}
+.divCvFoto{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.cvfoto{
+    margin: 5px;
+    max-width: 200px;
+}
+.medivalLine{
+    width: 500px;
+    height: 65px;
+}
+.cvfoto:hover {
+    box-shadow: 10px 10px;
+}
+.cvfoto:active {
+    border: solid red 2px;
+    box-shadow: none;
+}
+table, th, td{
+    border: solid gold;
+    border-collapse: collapse;
+    background-color: #333333;
+    font-size: 20px;
+    padding: 10px;
+}
+.divTable{
+    margin: 5px 0px 0px 10px;
+}

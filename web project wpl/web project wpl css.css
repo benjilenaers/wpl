@@ -1,0 +1,73 @@
+.totalBackGround{
+    background: #222222;
+}
+.divCvFoto{
+    display: flex;
+    justify-content: center;
+}
+.cvfoto{
+    margin: 20px;
+    max-height: 200px;
+}
+.cvfoto:hover {
+    box-shadow: 10px 10px;
+}
+.cvfoto:active {
+    border: solid red 2px;
+    box-shadow: none;
+}
+table, th, td{
+    border: solid black;
+    border-collapse: collapse;
+    font-size: 18px;
+    padding: 0 75px;
+    text-align: center;
+    margin: 5px;
+}
+table{
+    background-color: #333333;
+}
+.divTable{
+    display: flex;
+    justify-content: space-around;
+}
+tbody tr:nth-child(even){
+    font-weight: bolder;
+    background-color: #222222;
+}
+ul{
+    list-style: disc;
+}
+.divList{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.divFooter{
+    display: flex;
+    justify-content: space-between;
+    margin: 0 10px;
+}
+footer{
+    position: absolute;
+    background-color: black;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    margin-left: -8px;
+}
+.terugNaarBovenKnop{
+    background-color: white;
+    color: black;
+    padding: 5px;
+    border-radius: 12px;
+    text-decoration: none;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    height: 20px;
+    margin-top: 10px;
+}
+a:visited{
+    text-decoration: none;
+}

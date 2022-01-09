@@ -5,23 +5,24 @@
 .divCvFoto{
     display: flex;
     justify-content: space-around;
-    margin-top: 200px;
+    margin-top: 5px;
 }
 .divTekst{
-    margin-top: 40px;
+    margin-top: 60px;
     max-width: 400px;
     text-align: center;
 }
 .cvfoto{
     max-height: 300px;
-    margin-right: 780px;
     margin-bottom: 40px;
+    margin-left: -140px;
+    margin-right: 100px;
 }
 .cvfoto:hover {
     box-shadow: 10px 10px #333333;
 }
 .cvfoto:active {
-    border: solid red 2px;
+    border: solid #333333 2px;
     box-shadow: none;
 }
 .divSeperation{
@@ -43,9 +44,9 @@
     align-items: center;
 }
 .pleft1{
-     margin-top: 200px;
-     font-size: 30px;
-     font-weight: bold;
+    margin-top: 200px;
+    font-size: 30px;
+    font-weight: bold;
  }
 .divVerticalSeperation{
     box-sizing: border-box;
@@ -70,14 +71,14 @@ table, th, td{
 
 table{
     background-color: #333333;
-    box-shadow: 5px 5px;
+    box-shadow: 10px 10px #333333;
 }
 .divTable{
     height: 300px;
     margin-top: 150px
 }
 .pleft2{
-    margin-top: 390px;
+    margin-top: 370px;
     font-size: 30px;
     font-weight: bold;
 }
@@ -102,7 +103,7 @@ ul{
     margin: 50px 0;
 }
 .pleft4{
-    margin-top: 310px;
+    margin-top: 340px;
     font-size: 30px;
     font-weight: bold;
 }
@@ -163,9 +164,9 @@ a:visited {
 .lilang{
     max-width: 350px;
 }
-.divgegevens{
-    margin-top: 90px;
-    margin-bottom: 85px;
+.divSoftSkills{
+    margin-top: 100px;
+    margin-bottom: 70px;
 }
 .divNavBar{
     position: fixed;
@@ -189,13 +190,13 @@ a:visited {
 }
 .divNavigatie:link{
     text-decoration: none;
-    color: black;
+    color: #333333;
 }
 .divNavigatie:hover{
     border-bottom: black solid;
 }
 .divNavigatie:visited{
-    color: black;
+    color: #333333;
 }
 .divNaam{
     background-color: #111111;
@@ -215,4 +216,79 @@ a:visited {
 }
 .divNaam:hover {
     border-bottom: black solid;
+}
+.divFotogegevens{
+    display: flex;
+}
+.divGegevensFoto{
+    padding: 5px;
+    margin-left: 50px;
+    margin-top: 50px;
+}
+.h1Benji{
+    margin-top: 200px;
+    text-align: center;
+}
+.pSkills{
+    display: none;
+}
+.listSkills{
+    display: none;
+}
+@media screen and (max-width: 1550px){
+    .divCvFoto{
+        flex-direction: column;
+        margin-top: 5px;
+        align-items: center;
+    }
+    .divFotogegevens{
+        flex-direction: column;
+        justify-content: center;
+    }
+    .cvfoto{
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .linkFoto{
+        display: flex;
+        justify-content: center;
+    }
+    .divVerticalSeperation{
+        display: none;
+    }
+    .divSeperation{
+        margin-left: 0;
+    }
+}
+@media screen and (max-width: 800px){
+    .divleft{
+        display: none;
+    }
+    .pSkills{
+        display: flex;
+        justify-content: center;
+        font-size: 30px;
+        font-weight: bold;
+    }
+    .divRight{
+        min-width: 100%;
+    }
+}
+@media screen and (max-width: 650px) {
+    .divNavBar{
+        display: none;
+    }
+    .h1Benji{
+        margin-top: 0;
+    }
+}
+@media screen and (max-width: 480px) {
+    table{
+        display: none;
+    }
+    .listSkills{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
 }

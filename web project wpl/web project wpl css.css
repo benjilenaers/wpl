@@ -1,24 +1,33 @@
 .totalBackGround{
-    background: #222222;
+    background: whitesmoke;
+    color: #333333;
 }
 .divCvFoto{
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
+    margin-top: 200px;
+}
+.divTekst{
+    margin-top: 40px;
+    max-width: 400px;
+    text-align: center;
 }
 .cvfoto{
-    margin: 20px;
-    max-height: 200px;
+    max-height: 300px;
+    margin-right: 780px;
+    margin-bottom: 40px;
 }
 .cvfoto:hover {
-    box-shadow: 10px 10px;
+    box-shadow: 10px 10px #333333;
 }
 .cvfoto:active {
     border: solid red 2px;
     box-shadow: none;
 }
 .divSeperation{
-    height: 20px;
-    background-color: gold;
+    height: 10px;
+    margin-left: 25%;
+    background-color: #333333;
     box-sizing: border-box;
     border-right: none;
     border-left: none;
@@ -34,20 +43,20 @@
     align-items: center;
 }
 .pleft1{
-     margin-top: 140px;
+     margin-top: 200px;
      font-size: 30px;
      font-weight: bold;
  }
 .divVerticalSeperation{
     box-sizing: border-box;
-    width: 2%;
-    background-color: gold;
+    width: 1%;
+    background-color: #333333;
 }
 .divRight{
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-width: 73%;
+    min-width: 74%;
 }
 table, th, td{
     border: solid black;
@@ -56,13 +65,16 @@ table, th, td{
     padding: 0 75px;
     text-align: center;
     margin: 5px;
+    color: whitesmoke;
 }
+
 table{
     background-color: #333333;
+    box-shadow: 5px 5px;
 }
 .divTable{
     height: 300px;
-    margin-top: 50px
+    margin-top: 150px
 }
 .pleft2{
     margin-top: 390px;
@@ -89,9 +101,14 @@ ul{
 .divDiploma{
     margin: 50px 0;
 }
+.pleft4{
+    margin-top: 310px;
+    font-size: 30px;
+    font-weight: bold;
+}
 .divSeperarationbottom{
-    height: 20px;
-    background-color: gold;
+    height: 10px;
+    background-color: black;
     border-right: none;
     border-left: none;
     margin-bottom: 20px;
@@ -141,6 +158,61 @@ a:visited {
     color: blue;
 }
 .aVCSTPunch:hover{
-    color: white;
+    color: #333333;
 }
-
+.lilang{
+    max-width: 350px;
+}
+.divgegevens{
+    margin-top: 90px;
+    margin-bottom: 85px;
+}
+.divNavBar{
+    position: fixed;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    background-color: whitesmoke;
+    max-height: 60px;
+    width: 100%;
+    color: #333333;
+}
+.divNavigatieBox{
+    display: flex;
+    margin-right: 20px;
+    height: 60px;
+    align-items: center;
+}
+.divNavigatie{
+    padding: 20px 30px;
+    font-weight: bold;
+}
+.divNavigatie:link{
+    text-decoration: none;
+    color: black;
+}
+.divNavigatie:hover{
+    border-bottom: black solid;
+}
+.divNavigatie:visited{
+    color: black;
+}
+.divNaam{
+    background-color: #111111;
+    margin-left: 60px;
+    text-align: center;
+    padding: 5px;
+    width: 90px;
+    height: 76px;
+    box-shadow: 5px 5px black;
+}
+.pNaam:link{
+    text-decoration: none;
+    color: whitesmoke;
+}
+.pNaam:visited {
+    color: whitesmoke;
+}
+.divNaam:hover {
+    border-bottom: black solid;
+}

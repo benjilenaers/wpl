@@ -24,7 +24,7 @@ table{
     max-height: 600px;
 }
 .totalBackGround{
-    background-image: url("assets info over mezelf/houten achtergrond.jpg");
+    background-image: url("assets background/houten achtergrond.jpg");
     display: flex;
     justify-content: center;
     align-items: center;

@@ -1,5 +1,5 @@
 .totalBackgroundOpdrachten{
-    background-image: url("assets info over mezelf/houten achtergrond.jpg");
+    background-image: url("assets background/houten achtergrond.jpg");
     background-size: cover;
     display: flex;
     justify-content: center;
@@ -16,8 +16,29 @@
     justify-content: center;
     align-items: center;
     width: 750px;
+    height: 890px;
     box-shadow: black 10px 10px;
 }
 .List{
     max-width: 600px;
+}
+.knopHoofdPaginaPortfolioOpdrachten{
+    position: fixed;
+    top: 0;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    background-color: whitesmoke;
+    height: 40px;
+    width: 135px;
+    border-radius: 4px;
+    text-align: center;
+    right: 0;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+.knopHoofdPaginaPortfolioOpdrachten:hover {
+    box-shadow: black 6px 6px;
 }

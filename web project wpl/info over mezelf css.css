@@ -48,14 +48,13 @@
     color: black;
     font-weight: bold;
     margin-right:30px;
-    margin-top: 15px;
     background-color: whitesmoke;
     height: 40px;
     width: 135px;
     border-radius: 4px;
     text-align: center;
     margin-left: calc(50% - 67px);
-    margin-top: 50px;
+    margin-top: 65px;
 }
 .knopHoofdPaginaPortfolio:hover {
     box-shadow: black 6px 6px;

@@ -1,0 +1,66 @@
+table, th, td{
+    border: solid black;
+    border-collapse: collapse;
+    color: whitesmoke;
+    padding: 5px;
+}
+tbody tr:nth-child(odd){
+    background: #333333;
+}
+tbody tr:nth-child(even){
+    background: #222222;
+}
+thead{
+    background-color: #111111;
+}
+th{
+    background-color: #111111;
+}
+.tdSpecial{
+    background-color: black;
+}
+table{
+    max-width: 700px;
+    max-height: 600px;
+}
+.totalBackGround{
+    background-image: url("assets info over mezelf/houten achtergrond.jpg");
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+}
+.divTableLogBoek{
+    background-color: whitesmoke;
+    border: solid black 1px;
+    border-top-left-radius: 37px 140px;
+    border-top-right-radius: 23px 130px;
+    border-bottom-left-radius: 110px 19px;
+    border-bottom-right-radius: 120px 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 750px;
+    height: 850px;
+    box-shadow: black 10px 10px;
+}
+.knopHoofdPaginaPortfolioLogBoek{
+    position: fixed;
+    top: 0;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    background-color: whitesmoke;
+    height: 40px;
+    width: 135px;
+    border-radius: 4px;
+    text-align: center;
+    right: 0;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+.knopHoofdPaginaPortfolioLogBoek:hover {
+    box-shadow: black 6px 6px;
+}

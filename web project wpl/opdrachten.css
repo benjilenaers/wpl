@@ -1,0 +1,23 @@
+.totalBackgroundOpdrachten{
+    background-image: url("assets info over mezelf/houten achtergrond.jpg");
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+}
+.divOpdrachten{
+    background-color: whitesmoke;
+    border: solid black 1px;
+    border-top-left-radius: 37px 140px;
+    border-top-right-radius: 23px 130px;
+    border-bottom-left-radius: 110px 19px;
+    border-bottom-right-radius: 120px 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 750px;
+    box-shadow: black 10px 10px;
+}
+.List{
+    max-width: 600px;
+}

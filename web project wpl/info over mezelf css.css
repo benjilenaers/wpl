@@ -1,0 +1,62 @@
+.infoTotaleBackground{
+    background-image: url("assets info over mezelf/houten achtergrond.jpg");
+    background-size: cover;
+}
+.divTekst{
+    background-color: whitesmoke;
+    border: solid black 1px;
+    border-top-left-radius: 37px 140px;
+    border-top-right-radius: 23px 130px;
+    border-bottom-left-radius: 110px 19px;
+    border-bottom-right-radius: 120px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 600px;
+    box-shadow: black 3px 3px;
+}
+.pTekst{
+    max-width: 400px;
+    text-align: center;
+}
+.psTekst{
+    font-weight: bold;
+}
+.divTeksten{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 250px;
+}
+.divTekst2{
+    background-color: whitesmoke;
+    border: solid black 1px;
+    border-top-left-radius: 120px 24px;
+    border-top-right-radius: 23px 130px;
+    border-bottom-left-radius: 110px 19px;
+    border-bottom-right-radius: 37px 140px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 600px;
+    box-shadow: black 6px 3px;
+}
+.knopHoofdPaginaPortfolio{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    margin-right:30px;
+    margin-top: 15px;
+    background-color: whitesmoke;
+    height: 40px;
+    width: 135px;
+    border-radius: 4px;
+    text-align: center;
+    margin-left: calc(50% - 67px);
+    margin-top: 50px;
+}
+.knopHoofdPaginaPortfolio:hover {
+    box-shadow: black 6px 6px;
+}

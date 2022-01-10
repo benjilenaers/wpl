@@ -361,6 +361,7 @@ namespace werkplekleren_project_galgje
             Hintmenu.IsChecked = true;
         }
         #endregion
+        #region keydown
         private void NaamHighscoreInputBox_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Return)
@@ -368,31 +369,43 @@ namespace werkplekleren_project_galgje
                 HighScoresOpvragen();
             }
         }
-        #region Methodes               
+        #endregion
+        #region Methodes  
+        #region spel
+        /// <summary>
+        /// <code>
+        /// In deze methode word alles opgestart zoals de dynamische timer, het geheime woord zal aangemaakt worden in asterix tekens de raad knop wordt zichtbaar
+        /// en de verbergwoord collapsed
+        /// en de uitputStringbuilder wordt zichtbaar in de outputTextBox
+        /// </code>
+        /// </summary>
         private void StartSpel()
         {
             DynamischeTimer();
             stringBuilderGeheimWoord.Append(InputTextBox.Text);
             AanmakenWoordInAsterix();
-            InputTextBox.Text = string.Empty;            
+            InputTextBox.Text = string.Empty;
             VWBX_RaadButton.Visibility = Visibility.Visible;
-            VWBX_VerbergWoord.Visibility = Visibility.Collapsed;          
-            StringBuilderOutput();   
-            
+            VWBX_VerbergWoord.Visibility = Visibility.Collapsed;
+            StringBuilderOutput();
+
         }
-        private void timer_Tick(object sender, EventArgs e)
+        /// <summary>
+        /// De ouput wordt hier gevuld en aangepast met de weergegeven en ingegeven waardes tekst.
+        /// </summary>
+        private void StringBuilderOutput()
         {
-            secondenAftellen--;
-            seconden.Text = secondenAftellen.ToString();
-            TimerTellerOpNul();
-            TellerVeranderdVanKleurBijLageWaarde();
+            OutputTextBlock.Text = ($"{aantalLevens} levens \n\r " +
+                                    $"Juiste Letters: {stringBuilderJuisteLetters}\n\r" +
+                                    $"Foute Letters: {stringBuilderFouteLetter}\n\r" +
+                                    $"{woordInAsteriksAlsString}");
         }
         /// <summary>
         /// wanneer het aantal levens op 0 staat zal de raadbuuton uit staan en er een tekst geprint worden.
         /// </summary>
         private void VerloopVanHetSpel()
         {
-            
+
             if (aantalLevens != 1)
             {
                 IsHetGeradenWoordofLetterJuist();
@@ -401,20 +414,17 @@ namespace werkplekleren_project_galgje
             {
                 timer.Stop();
                 OutputTextBlock.Text = $"Sorry maar al je levens zijn op het woord dat we zochten was {stringBuilderGeheimWoord}";
-                RaadButton.IsEnabled = false;                               
+                RaadButton.IsEnabled = false;
             }
-            
+
             GetImage();
         }
-
         /// <summary>
         /// <code>
-        /// In deze methode worden beide stringBuilders terug leeggemaakt en vernieuwd.
-        /// De tekst in de ouputbox terug gereset naar oorspronkelijk gewenste tekst
-        ///  en input tekst box gecleared.
-        ///  De raad knop wordt terug hidden en de verbergWoordButton is terug enabled.
-        ///  ook het aantal levens staat terug op 10.
-        ///  </code>
+        /// alle stringBuilders worden gereset behalve die voor de highscore
+        /// layout word ook terug gereset naar het begin stadium
+        /// ook de List word terug gereset
+        /// </code>
         /// </summary>
         private void AllesVoorEenNieuwSpel()
         {
@@ -448,134 +458,18 @@ namespace werkplekleren_project_galgje
             Hintmenu.IsEnabled = false;
             Hintmenu.IsChecked = false;
         }
-        private void AanmakenWoordInAsterix()
+        #endregion
+        #region timer
+        private void timer_Tick(object sender, EventArgs e)
         {
-            woordInAsteriks = new char[stringBuilderGeheimWoord.Length];
-            for (int i = 0; i < stringBuilderGeheimWoord.Length; i++)
-            {
-                woordInAsteriks[i] = '*';
-                woordInAsteriksAlsString = new string(woordInAsteriks);
-            }            
+            secondenAftellen--;
+            seconden.Text = secondenAftellen.ToString();
+            TimerTellerOpNul();
+            TellerVeranderdVanKleurBijLageWaarde();
         }
-
         /// <summary>
-        /// Hier kijken we of de geraden letter in het woord staat. Bij zowel ja als neen word de stringBuilder aangepast en gaat het aantal levens met 1 omlaag.
+        /// Wanneer de teller op 0 staat zal er een leven afgetrokken worden de achtergrond zal ook rood kleuren en de timer zal resetten
         /// </summary>
-        private void BoolAanmakenOmTeKijkenOfLetterInGeheimWoordStaat()
-        {
-            string woordConverrsieNaarString = stringBuilderGeheimWoord.ToString();
-            geradenLetter = Convert.ToChar(InputTextBox.Text);
-            geraden = woordConverrsieNaarString.Contains(geradenLetter);
-
-        }
-
-        /// <summary>
-        /// De ouput wordt hier gevuld en aangepast met de weergegeven en ingegeven waardes tekst.
-        /// </summary>
-        private void StringBuilderOutput()
-        {           
-            
-            OutputTextBlock.Text = ($"{aantalLevens} levens \n\r " +
-                                    $"Juiste Letters: {stringBuilderJuisteLetters}\n\r" +
-                                    $"Foute Letters: {stringBuilderFouteLetter}\n\r" +
-                                    $"{woordInAsteriksAlsString}");          
-        }
-        private void IsGeradenLetterJuist()
-        {
-            BoolAanmakenOmTeKijkenOfLetterInGeheimWoordStaat();
-            StringBuilderOutput();
-
-            if (geraden)
-            {
-                if (stringBuilderJuisteLetters.Length == 0)
-                {
-                    stringBuilderJuisteLetters.Append(InputTextBox.Text);
-                }
-                else
-                {
-                    stringBuilderJuisteLetters.Append(", " + InputTextBox.Text);
-                }
-                
-                LetterPlaatsenInWoordInAsterix();
-            }
-            else
-            {
-                if (stringBuilderFouteLetter.Length == 0)
-                {
-                    stringBuilderFouteLetter.Append(InputTextBox.Text);
-                }
-                else
-                {
-                    stringBuilderFouteLetter.Append(", " + InputTextBox.Text);
-                }
-                aantalLevens = aantalLevens - 1;
-            }
-            StringBuilderOutput();
-        }
-
-        private void LetterPlaatsenInWoordInAsterix()
-        {
-            BoolAanmakenOmTeKijkenOfLetterInGeheimWoordStaat();
-            
-                for (int j = 0; j < stringBuilderGeheimWoord.Length; j++)
-                {
-                    if (geradenLetter == stringBuilderGeheimWoord[j])
-                    {
-                        woordInAsteriks[j] = geradenLetter;                        
-                    }
-                }
-            woordInAsteriksAlsString = new string(woordInAsteriks);
-            
-        }
-
-        /// <summary>
-        /// <code>
-        /// Hier kijken we wanneer er bij input een woord word geraden of deze gelijk is aan het geheime woord
-        /// indien ja, dan word een overwinningstekst geprint.
-        /// Indien nee, dan word er een tekst geprint met het foute woord + het aantal levens je nog hebt
-        /// </code>
-        /// </summary>
-        private void IsHetGeradenWoordJuist()
-        {
-            geradenWoord = InputTextBox.Text;
-
-            if (geradenWoord == stringBuilderGeheimWoord.ToString())
-            {
-                WanneerHintGeenHighScore();
-                RaadButton.IsEnabled = false;
-                OutputTextBlock.Text = $"Joepie het antwoord is inderdaad: {geradenWoord}";                
-                timer.Stop();
-            }
-            else if (geradenWoord != stringBuilderGeheimWoord.ToString())
-            {
-                aantalLevens = aantalLevens - 1;
-                OutputTextBlock.Text = $"{geradenWoord} is niet het woord dat we zochten, maar geef niet op je hebt nog {aantalLevens} levens.";
-                timer.Stop();
-            }
-            
-        }
-
-        /// <summary>
-        /// hier catchen we op de FormatException indien er woorden worden geraden in plaats van letters
-        /// </summary>
-        private void IsHetGeradenWoordofLetterJuist()
-        {
-            try
-            {
-                IsGeradenLetterJuist();                
-            }            
-            catch (FormatException)
-            {
-                IsHetGeradenWoordJuist();
-            }
-            if (woordInAsteriksAlsString == stringBuilderGeheimWoord.ToString())
-            {
-                OutputTextBlock.Text = $"Joepie het antwoord is inderdaad: {stringBuilderGeheimWoord.ToString()}";
-                timer.Stop();
-                WanneerHintGeenHighScore();
-            }
-        }
-
         private void TimerTellerOpNul()
         {
             StringBuilderOutput();
@@ -584,7 +478,7 @@ namespace werkplekleren_project_galgje
             {
                 aantalLevens--;
                 secondenAftellen = Convert.ToInt32(secondenIngeven.Text) + 1;
-                Background.Background = Brushes.Red;                
+                Background.Background = Brushes.Red;
             }
             else
             {
@@ -594,7 +488,9 @@ namespace werkplekleren_project_galgje
             GetImage();
             StringBuilderOutput();
         }
-
+        /// <summary>
+        /// wanneer de timer aan het getal 3 of lager zit zal deze rood kleuren
+        /// </summary>
         private void TellerVeranderdVanKleurBijLageWaarde()
         {
             if (secondenAftellen <= 3)
@@ -605,50 +501,9 @@ namespace werkplekleren_project_galgje
             {
                 seconden.Foreground = Brushes.Black;
             }
-        }
-
-        private void GetImage()
-        {
-            switch (aantalLevens)
-            {
-                case 10: galg.Source = new BitmapImage(new Uri("/images/galg/hangman part10.png", UriKind.Relative));
-                    break;
-                case 9: galg.Source = new BitmapImage(new Uri("/images/galg/hangman part1.png", UriKind.Relative));
-                    break;
-                case 8: galg.Source = new BitmapImage(new Uri("/images/galg/hangman part2.png", UriKind.Relative));
-                    break;
-                case 7: galg.Source = new BitmapImage(new Uri("/images/galg/hangman part3.png", UriKind.Relative));
-                    break;
-                case 6: galg.Source = new BitmapImage(new Uri("/images/galg/hangman part4.png", UriKind.Relative));
-                    break;
-                case 5: galg.Source = new BitmapImage(new Uri("/images/galg/hangman part5.png", UriKind.Relative));
-                    break;
-                case 4: galg.Source = new BitmapImage(new Uri("/images/galg/hangman part6.png", UriKind.Relative));
-                    break;
-                case 3: galg.Source = new BitmapImage(new Uri("/images/galg/hangman part7.png", UriKind.Relative));
-                    break;
-                case 2: galg.Source = new BitmapImage(new Uri("/images/galg/hangman part8.png", UriKind.Relative));
-                    break;
-                case 1: galg.Source = new BitmapImage(new Uri("/images/galg/hangman part9.png", UriKind.Relative));
-                    break;
-                default: galg.Source = new BitmapImage(new Uri("/images/galg/hangman part10.png", UriKind.Relative));
-                    break;
-            }
-        }
-        private void RandomWoordGenerator()
-        {
-            int randomWoord = randomWoordGenerator.Next(galgjeWoorden.Length);
-            stringBuilderGeheimWoord.Append(galgjeWoorden[randomWoord]);
-        }
-        private void ScoreBijhoudenSpeler()
-        {
-            stringBuilderTopscore.AppendLine($"{naamSpeler} - {aantalLevens} levens ({DateTime.Now.ToLongTimeString()})");
-            highScoreString = ($"{naamSpeler} - {aantalLevens} levens ({DateTime.Now.ToLongTimeString()})");
-            highScoreList.Add(highScoreString);
-        }
-
+        }        
         /// <summary>
-        /// zorgt ervoor dat wanneer er iets niet klopt aan de tijd deze naar defaultwaarde 10 gaat en dan het spel start
+        /// hier word gekeken of de waarde die word ingegeven in de timer textbox ook effectief een getal is en of deze van 5 tem 20 is ander defaultwaarde 10
         /// </summary>
         private void DynamischeTimer()
         {
@@ -680,17 +535,146 @@ namespace werkplekleren_project_galgje
                 secondenAftellen = 10;
             }
         }
+        #endregion       
+        #region Woord
+        /// <summary>
+        /// Hier kijken we of de geraden letter in het woord staat. Bij zowel ja als neen word de stringBuilder aangepast en gaat het aantal levens met 1 omlaag.
+        /// </summary>
+        private void BoolAanmakenOmTeKijkenOfLetterInGeheimWoordStaat()
+        {
+            string woordConverrsieNaarString = stringBuilderGeheimWoord.ToString();
+            geradenLetter = Convert.ToChar(InputTextBox.Text);
+            geraden = woordConverrsieNaarString.Contains(geradenLetter);
+
+        }
+        private void AanmakenWoordInAsterix()
+        {
+            woordInAsteriks = new char[stringBuilderGeheimWoord.Length];
+            for (int i = 0; i < stringBuilderGeheimWoord.Length; i++)
+            {
+                woordInAsteriks[i] = '*';
+                woordInAsteriksAlsString = new string(woordInAsteriks);
+            }
+        }
+        private void LetterPlaatsenInWoordInAsterix()
+        {
+            BoolAanmakenOmTeKijkenOfLetterInGeheimWoordStaat();
+
+            for (int j = 0; j < stringBuilderGeheimWoord.Length; j++)
+            {
+                if (geradenLetter == stringBuilderGeheimWoord[j])
+                {
+                    woordInAsteriks[j] = geradenLetter;
+                }
+            }
+            woordInAsteriksAlsString = new string(woordInAsteriks);
+
+        }
+        private void RandomWoordGenerator()
+        {
+            int randomWoord = randomWoordGenerator.Next(galgjeWoorden.Length);
+            stringBuilderGeheimWoord.Append(galgjeWoorden[randomWoord]);
+        }
+
+        #endregion
+        #region raden
+        private void IsGeradenLetterJuist()
+        {
+            BoolAanmakenOmTeKijkenOfLetterInGeheimWoordStaat();
+            StringBuilderOutput();
+
+            if (geraden)
+            {
+                if (stringBuilderJuisteLetters.Length == 0)
+                {
+                    stringBuilderJuisteLetters.Append(InputTextBox.Text);
+                }
+                else
+                {
+                    stringBuilderJuisteLetters.Append(", " + InputTextBox.Text);
+                }
+
+                LetterPlaatsenInWoordInAsterix();
+            }
+            else
+            {
+                if (stringBuilderFouteLetter.Length == 0)
+                {
+                    stringBuilderFouteLetter.Append(InputTextBox.Text);
+                }
+                else
+                {
+                    stringBuilderFouteLetter.Append(", " + InputTextBox.Text);
+                }
+                aantalLevens = aantalLevens - 1;
+            }
+            StringBuilderOutput();
+        }
+
+        /// <summary>
+        /// <code>
+        /// Hier kijken we wanneer er bij input een woord word geraden of deze gelijk is aan het geheime woord
+        /// indien ja, dan word een overwinningstekst geprint.
+        /// Indien nee, dan word er een tekst geprint met het foute woord + het aantal levens je nog hebt
+        /// </code>
+        /// </summary>
+        private void IsHetGeradenWoordJuist()
+        {
+            geradenWoord = InputTextBox.Text;
+
+            if (geradenWoord == stringBuilderGeheimWoord.ToString())
+            {
+                WanneerHintGeenHighScore();
+                RaadButton.IsEnabled = false;
+                OutputTextBlock.Text = $"Joepie het antwoord is inderdaad: {geradenWoord}";
+                timer.Stop();
+            }
+            else if (geradenWoord != stringBuilderGeheimWoord.ToString())
+            {
+                aantalLevens = aantalLevens - 1;
+                OutputTextBlock.Text = $"{geradenWoord} is niet het woord dat we zochten, maar geef niet op je hebt nog {aantalLevens} levens.";
+                timer.Stop();
+            }
+        }
+        /// <summary>
+        /// hier catchen we op de FormatException indien er woorden worden geraden in plaats van letters
+        /// </summary>
+        private void IsHetGeradenWoordofLetterJuist()
+        {
+            try
+            {
+                IsGeradenLetterJuist();
+            }
+            catch (FormatException)
+            {
+                IsHetGeradenWoordJuist();
+            }
+            if (woordInAsteriksAlsString == stringBuilderGeheimWoord.ToString())
+            {
+                OutputTextBlock.Text = $"Joepie het antwoord is inderdaad: {stringBuilderGeheimWoord.ToString()}";
+                timer.Stop();
+                WanneerHintGeenHighScore();
+            }
+        }
+        #endregion
+        #region highscore
+        private void ScoreBijhoudenSpeler()
+        {
+            stringBuilderTopscore.AppendLine($"{naamSpeler} - {aantalLevens} levens ({DateTime.Now.ToLongTimeString()})");
+            highScoreString = ($"{naamSpeler} - {aantalLevens} levens ({DateTime.Now.ToLongTimeString()})");
+            highScoreList.Add(highScoreString);
+        }
         private void HighScoresOpvragen()
         {
             naamHighscore = NaamHighscoreInputBox.Text;
-            
+
             for (int i = 0; i < highScoreList.Count; i++)
             {
                 if (highScoreList[i].Contains(naamHighscore))
                 {
                     stringBuilderTopscoreOpvragen.AppendLine(highScoreList[i]);
                 }
-            }           
+            }
 
             MessageBoxResult highScoresOpvragenMessageBox = MessageBox.Show(stringBuilderTopscoreOpvragen.ToString(), "Highscores", MessageBoxButton.OK);
 
@@ -699,7 +683,8 @@ namespace werkplekleren_project_galgje
                 stringBuilderTopscoreOpvragen.Clear();
             }
         }
-
+        #endregion
+        #region hint
         private void HintMethode()
         {
             string woordConverrsieNaarString = stringBuilderGeheimWoord.ToString();
@@ -713,8 +698,8 @@ namespace werkplekleren_project_galgje
                         hintLetter.RemoveAt(j);
                     };
                 }
-                
-                
+
+
             }
             int randomHintLetterIndex = randomHintLetterGenerator.Next(hintLetter.Count);
             randomHintLetter = hintLetter[randomHintLetterIndex];
@@ -727,9 +712,37 @@ namespace werkplekleren_project_galgje
                 ScoreBijhoudenSpeler();
             }
         }
-
         #endregion
-
-        
+        #region image
+        private void GetImage()
+        {
+            switch (aantalLevens)
+            {
+                case 10: galg.Source = new BitmapImage(new Uri("/images/galg/hangman part10.png", UriKind.Relative));
+                    break;
+                case 9: galg.Source = new BitmapImage(new Uri("/images/galg/hangman part1.png", UriKind.Relative));
+                    break;
+                case 8: galg.Source = new BitmapImage(new Uri("/images/galg/hangman part2.png", UriKind.Relative));
+                    break;
+                case 7: galg.Source = new BitmapImage(new Uri("/images/galg/hangman part3.png", UriKind.Relative));
+                    break;
+                case 6: galg.Source = new BitmapImage(new Uri("/images/galg/hangman part4.png", UriKind.Relative));
+                    break;
+                case 5: galg.Source = new BitmapImage(new Uri("/images/galg/hangman part5.png", UriKind.Relative));
+                    break;
+                case 4: galg.Source = new BitmapImage(new Uri("/images/galg/hangman part6.png", UriKind.Relative));
+                    break;
+                case 3: galg.Source = new BitmapImage(new Uri("/images/galg/hangman part7.png", UriKind.Relative));
+                    break;
+                case 2: galg.Source = new BitmapImage(new Uri("/images/galg/hangman part8.png", UriKind.Relative));
+                    break;
+                case 1: galg.Source = new BitmapImage(new Uri("/images/galg/hangman part9.png", UriKind.Relative));
+                    break;
+                default: galg.Source = new BitmapImage(new Uri("/images/galg/hangman part10.png", UriKind.Relative));
+                    break;
+            }
+        }
+        #endregion
+        #endregion
     }
 }

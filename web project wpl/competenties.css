@@ -36,6 +36,9 @@
     justify-content: center;
     align-items: center;
     width: 750px;
-    height: 890px;
+    height: 1300px;
     box-shadow: black 10px 10px;
+}
+.listCompetenties{
+    max-width: 600px;
 }

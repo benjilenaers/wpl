@@ -34,9 +34,10 @@
     margin-right:30px;
     margin-top: 10px;
     background-color: whitesmoke;
-    height: 30px;
-    width: 100px;
+    height: 39px;
+    width: 125px;
     border-radius: 3px;
+    text-align: center;
 }
 .knopNav:hover {
     box-shadow: black 5px 5px;

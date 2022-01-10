@@ -1,0 +1,42 @@
+.totalBackGroundOntwikkeling{
+    background-image: url("assets background/houten achtergrond.jpg");
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+}
+.divTekstOntwikkeling{
+    background-color: whitesmoke;
+    border: solid black 1px;
+    border-top-left-radius: 37px 140px;
+    border-top-right-radius: 23px 130px;
+    border-bottom-left-radius: 110px 19px;
+    border-bottom-right-radius: 120px 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 750px;
+    height: 500px;
+    box-shadow: black 10px 10px;
+    margin-top: 150px;
+}
+.knopHoofdPaginaPortfolioOntwikkeling{
+    position: fixed;
+    top: 0;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    background-color: whitesmoke;
+    height: 40px;
+    width: 135px;
+    border-radius: 4px;
+    text-align: center;
+    right: 0;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+.knopHoofdPaginaPortfolioOntwikkeling:hover {
+    box-shadow: black 6px 6px;
+}
